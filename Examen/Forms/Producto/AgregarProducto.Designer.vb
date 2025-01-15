@@ -22,44 +22,44 @@ Partial Class AgregarProducto
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBoxCategoria = New System.Windows.Forms.TextBox()
+        Me.TextBoxPrecio = New System.Windows.Forms.TextBox()
         Me.ButtonAgregar = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBoxNombre = New System.Windows.Forms.TextBox()
         Me.LabelCategoria = New System.Windows.Forms.Label()
         Me.LabelPrecio = New System.Windows.Forms.Label()
         Me.LabelNombre = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'TextBox3
+        'TextBoxCategoria
         '
-        Me.TextBox3.Location = New System.Drawing.Point(395, 243)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(100, 22)
-        Me.TextBox3.TabIndex = 13
+        Me.TextBoxCategoria.Location = New System.Drawing.Point(395, 243)
+        Me.TextBoxCategoria.Name = "TextBoxCategoria"
+        Me.TextBoxCategoria.Size = New System.Drawing.Size(100, 22)
+        Me.TextBoxCategoria.TabIndex = 3
         '
-        'TextBox2
+        'TextBoxPrecio
         '
-        Me.TextBox2.Location = New System.Drawing.Point(395, 186)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 22)
-        Me.TextBox2.TabIndex = 12
+        Me.TextBoxPrecio.Location = New System.Drawing.Point(395, 186)
+        Me.TextBoxPrecio.Name = "TextBoxPrecio"
+        Me.TextBoxPrecio.Size = New System.Drawing.Size(100, 22)
+        Me.TextBoxPrecio.TabIndex = 2
         '
         'ButtonAgregar
         '
         Me.ButtonAgregar.Location = New System.Drawing.Point(354, 299)
         Me.ButtonAgregar.Name = "ButtonAgregar"
         Me.ButtonAgregar.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonAgregar.TabIndex = 11
+        Me.ButtonAgregar.TabIndex = 4
         Me.ButtonAgregar.Text = "Agregar"
         Me.ButtonAgregar.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'TextBoxNombre
         '
-        Me.TextBox1.Location = New System.Drawing.Point(395, 130)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 22)
-        Me.TextBox1.TabIndex = 10
+        Me.TextBoxNombre.Location = New System.Drawing.Point(395, 130)
+        Me.TextBoxNombre.Name = "TextBoxNombre"
+        Me.TextBoxNombre.Size = New System.Drawing.Size(100, 22)
+        Me.TextBoxNombre.TabIndex = 1
         '
         'LabelCategoria
         '
@@ -93,10 +93,10 @@ Partial Class AgregarProducto
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.TextBox3)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.TextBoxCategoria)
+        Me.Controls.Add(Me.TextBoxPrecio)
         Me.Controls.Add(Me.ButtonAgregar)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.TextBoxNombre)
         Me.Controls.Add(Me.LabelCategoria)
         Me.Controls.Add(Me.LabelPrecio)
         Me.Controls.Add(Me.LabelNombre)
@@ -107,10 +107,10 @@ Partial Class AgregarProducto
 
     End Sub
 
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBoxCategoria As TextBox
+    Friend WithEvents TextBoxPrecio As TextBox
     Friend WithEvents ButtonAgregar As Button
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBoxNombre As TextBox
     Friend WithEvents LabelCategoria As Label
     Friend WithEvents LabelPrecio As Label
     Friend WithEvents LabelNombre As Label

@@ -26,6 +26,7 @@ Partial Class EliminarCliente
         Me.ButtonBuscar = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ButtonEliminar = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -65,11 +66,22 @@ Partial Class EliminarCliente
         Me.ButtonEliminar.Text = "Eliminar"
         Me.ButtonEliminar.UseVisualStyleBackColor = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(491, 265)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(16, 17)
+        Me.Label1.TabIndex = 4
+        Me.Label1.Text = "0"
+        Me.Label1.Visible = False
+        '
         'EliminarCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ButtonEliminar)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.ButtonBuscar)
@@ -86,4 +98,5 @@ Partial Class EliminarCliente
     Friend WithEvents ButtonBuscar As Button
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents ButtonEliminar As Button
+    Friend WithEvents Label1 As Label
 End Class

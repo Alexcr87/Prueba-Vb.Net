@@ -37,6 +37,11 @@
     End Sub
 
     Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
-        Application.Exit()
+        Dim confirmacion As DialogResult = MessageBox.Show("¿Está seguro de que desea salir?", "Examen", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        If confirmacion = DialogResult.Yes Then
+            Application.Exit()
+        Else
+            MessageBox.Show("Operación cancelada.", "Cancelar", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
     End Sub
 End Class

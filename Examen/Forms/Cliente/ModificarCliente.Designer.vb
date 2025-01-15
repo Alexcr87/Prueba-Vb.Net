@@ -23,67 +23,138 @@ Partial Class ModificarCliente
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.ButtonModificar = New System.Windows.Forms.Button()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.ButtonBuscar = New System.Windows.Forms.Button()
+        Me.TextBoxCorreo = New System.Windows.Forms.TextBox()
+        Me.TextBoxTelefono = New System.Windows.Forms.TextBox()
+        Me.TextBoxCliente = New System.Windows.Forms.TextBox()
+        Me.LabelCorreo = New System.Windows.Forms.Label()
+        Me.LabelTelefono = New System.Windows.Forms.Label()
+        Me.LabelCliente = New System.Windows.Forms.Label()
         Me.TextBoxBuscar = New System.Windows.Forms.TextBox()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ButtonBuscar = New System.Windows.Forms.Button()
+        Me.ButtonCancelar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ButtonModificar
         '
-        Me.ButtonModificar.Location = New System.Drawing.Point(319, 323)
+        Me.ButtonModificar.Location = New System.Drawing.Point(304, 277)
         Me.ButtonModificar.Name = "ButtonModificar"
-        Me.ButtonModificar.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonModificar.TabIndex = 7
+        Me.ButtonModificar.Size = New System.Drawing.Size(85, 31)
+        Me.ButtonModificar.TabIndex = 22
         Me.ButtonModificar.Text = "Modificar"
         Me.ButtonModificar.UseVisualStyleBackColor = True
+        Me.ButtonModificar.Visible = False
         '
-        'DataGridView1
+        'TextBoxCorreo
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(121, 145)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersWidth = 51
-        Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(559, 150)
-        Me.DataGridView1.TabIndex = 6
+        Me.TextBoxCorreo.Location = New System.Drawing.Point(399, 226)
+        Me.TextBoxCorreo.Name = "TextBoxCorreo"
+        Me.TextBoxCorreo.Size = New System.Drawing.Size(100, 22)
+        Me.TextBoxCorreo.TabIndex = 21
+        Me.TextBoxCorreo.Visible = False
         '
-        'ButtonBuscar
+        'TextBoxTelefono
         '
-        Me.ButtonBuscar.Location = New System.Drawing.Point(451, 105)
-        Me.ButtonBuscar.Name = "ButtonBuscar"
-        Me.ButtonBuscar.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonBuscar.TabIndex = 5
-        Me.ButtonBuscar.Text = "Buscar"
-        Me.ButtonBuscar.UseVisualStyleBackColor = True
+        Me.TextBoxTelefono.Location = New System.Drawing.Point(399, 184)
+        Me.TextBoxTelefono.Name = "TextBoxTelefono"
+        Me.TextBoxTelefono.Size = New System.Drawing.Size(100, 22)
+        Me.TextBoxTelefono.TabIndex = 20
+        Me.TextBoxTelefono.Visible = False
+        '
+        'TextBoxCliente
+        '
+        Me.TextBoxCliente.Location = New System.Drawing.Point(399, 142)
+        Me.TextBoxCliente.Name = "TextBoxCliente"
+        Me.TextBoxCliente.Size = New System.Drawing.Size(100, 22)
+        Me.TextBoxCliente.TabIndex = 19
+        Me.TextBoxCliente.Visible = False
+        '
+        'LabelCorreo
+        '
+        Me.LabelCorreo.AutoSize = True
+        Me.LabelCorreo.Location = New System.Drawing.Point(301, 226)
+        Me.LabelCorreo.Name = "LabelCorreo"
+        Me.LabelCorreo.Size = New System.Drawing.Size(51, 17)
+        Me.LabelCorreo.TabIndex = 18
+        Me.LabelCorreo.Text = "Correo"
+        Me.LabelCorreo.Visible = False
+        '
+        'LabelTelefono
+        '
+        Me.LabelTelefono.AutoSize = True
+        Me.LabelTelefono.Location = New System.Drawing.Point(301, 184)
+        Me.LabelTelefono.Name = "LabelTelefono"
+        Me.LabelTelefono.Size = New System.Drawing.Size(64, 17)
+        Me.LabelTelefono.TabIndex = 17
+        Me.LabelTelefono.Text = "Telefono"
+        Me.LabelTelefono.Visible = False
+        '
+        'LabelCliente
+        '
+        Me.LabelCliente.AutoSize = True
+        Me.LabelCliente.Location = New System.Drawing.Point(301, 142)
+        Me.LabelCliente.Name = "LabelCliente"
+        Me.LabelCliente.Size = New System.Drawing.Size(51, 17)
+        Me.LabelCliente.TabIndex = 16
+        Me.LabelCliente.Text = "Cliente"
+        Me.LabelCliente.Visible = False
         '
         'TextBoxBuscar
         '
-        Me.TextBoxBuscar.Location = New System.Drawing.Point(207, 105)
+        Me.TextBoxBuscar.Location = New System.Drawing.Point(284, 86)
         Me.TextBoxBuscar.Name = "TextBoxBuscar"
-        Me.TextBoxBuscar.Size = New System.Drawing.Size(205, 22)
-        Me.TextBoxBuscar.TabIndex = 4
-        Me.TextBoxBuscar.Text = "Ingrese un Nombre"
+        Me.TextBoxBuscar.Size = New System.Drawing.Size(149, 22)
+        Me.TextBoxBuscar.TabIndex = 23
+        Me.TextBoxBuscar.Text = "Ingrese ID del Cliente"
+        '
+        'ButtonBuscar
+        '
+        Me.ButtonBuscar.Location = New System.Drawing.Point(439, 82)
+        Me.ButtonBuscar.Name = "ButtonBuscar"
+        Me.ButtonBuscar.Size = New System.Drawing.Size(85, 31)
+        Me.ButtonBuscar.TabIndex = 24
+        Me.ButtonBuscar.Text = "Buscar"
+        Me.ButtonBuscar.UseVisualStyleBackColor = True
+        '
+        'ButtonCancelar
+        '
+        Me.ButtonCancelar.Location = New System.Drawing.Point(439, 277)
+        Me.ButtonCancelar.Name = "ButtonCancelar"
+        Me.ButtonCancelar.Size = New System.Drawing.Size(85, 31)
+        Me.ButtonCancelar.TabIndex = 25
+        Me.ButtonCancelar.Text = "Cancelar"
+        Me.ButtonCancelar.UseVisualStyleBackColor = True
+        Me.ButtonCancelar.Visible = False
         '
         'ModificarCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.ButtonModificar)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.ButtonCancelar)
         Me.Controls.Add(Me.ButtonBuscar)
         Me.Controls.Add(Me.TextBoxBuscar)
+        Me.Controls.Add(Me.ButtonModificar)
+        Me.Controls.Add(Me.TextBoxCorreo)
+        Me.Controls.Add(Me.TextBoxTelefono)
+        Me.Controls.Add(Me.TextBoxCliente)
+        Me.Controls.Add(Me.LabelCorreo)
+        Me.Controls.Add(Me.LabelTelefono)
+        Me.Controls.Add(Me.LabelCliente)
         Me.Name = "ModificarCliente"
         Me.Text = "Modificar Cliente"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents ButtonModificar As Button
-    Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents ButtonBuscar As Button
+    Friend WithEvents TextBoxCorreo As TextBox
+    Friend WithEvents TextBoxTelefono As TextBox
+    Friend WithEvents TextBoxCliente As TextBox
+    Friend WithEvents LabelCorreo As Label
+    Friend WithEvents LabelTelefono As Label
+    Friend WithEvents LabelCliente As Label
     Friend WithEvents TextBoxBuscar As TextBox
+    Friend WithEvents ButtonBuscar As Button
+    Friend WithEvents ButtonCancelar As Button
 End Class

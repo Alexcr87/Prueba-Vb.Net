@@ -75,7 +75,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\ClassClientes.vb" />
+    <Compile Include="Models\ClassProductos.vb" />
+    <Compile Include="Models\Cliente.vb" />
+    <Compile Include="Services\ClassClientes.vb" />
     <Compile Include="Forms\Cliente\Clientes.Designer.vb">
       <DependentUpon>Clientes.vb</DependentUpon>
     </Compile>
@@ -136,6 +138,8 @@
     <Compile Include="Forms\Producto\Productos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="helpers\ControlVisibilityHelper.vb" />
+    <Compile Include="helpers\TextBoxHelper.vb" />
     <Compile Include="Module1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -205,7 +209,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
+    <Folder Include="Models\Clientes\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Clientes.jpg" />

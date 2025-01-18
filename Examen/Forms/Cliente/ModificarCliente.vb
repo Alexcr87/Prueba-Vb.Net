@@ -13,7 +13,6 @@
             End If
 
             Dim clientes As New ClassClientes()
-            ' Buscar cliente usando el ID
             Dim clienteEncontrado As DataRow = clientes.BuscarClientePorID(id)
 
             If clienteEncontrado IsNot Nothing Then
@@ -33,7 +32,6 @@
 
     Private Sub ButtonModificar_Click(sender As Object, e As EventArgs) Handles ButtonModificar.Click
         Try
-            ' Validar que los campos no estén vacíos
             If String.IsNullOrWhiteSpace(TextBoxCliente.Text) OrElse
            String.IsNullOrWhiteSpace(TextBoxTelefono.Text) OrElse
            String.IsNullOrWhiteSpace(TextBoxCorreo.Text) Then

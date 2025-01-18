@@ -91,19 +91,19 @@ Partial Class FormPrincipal
         'NuevoToolStripMenuItem1
         '
         Me.NuevoToolStripMenuItem1.Name = "NuevoToolStripMenuItem1"
-        Me.NuevoToolStripMenuItem1.Size = New System.Drawing.Size(224, 26)
+        Me.NuevoToolStripMenuItem1.Size = New System.Drawing.Size(156, 26)
         Me.NuevoToolStripMenuItem1.Text = "Nuevo"
         '
         'ModificarToolStripMenuItem1
         '
         Me.ModificarToolStripMenuItem1.Name = "ModificarToolStripMenuItem1"
-        Me.ModificarToolStripMenuItem1.Size = New System.Drawing.Size(224, 26)
+        Me.ModificarToolStripMenuItem1.Size = New System.Drawing.Size(156, 26)
         Me.ModificarToolStripMenuItem1.Text = "Modificar"
         '
         'EliminarToolStripMenuItem1
         '
         Me.EliminarToolStripMenuItem1.Name = "EliminarToolStripMenuItem1"
-        Me.EliminarToolStripMenuItem1.Size = New System.Drawing.Size(224, 26)
+        Me.EliminarToolStripMenuItem1.Size = New System.Drawing.Size(156, 26)
         Me.EliminarToolStripMenuItem1.Text = "Eliminar"
         '
         'SalirToolStripMenuItem

@@ -69,4 +69,5 @@ Public Class ClassVentas
 
         Return dt
     End Function
+
 End Class

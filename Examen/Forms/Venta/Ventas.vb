@@ -47,6 +47,7 @@
             carrito.Rows.Add(idProducto, nombreProducto, cantidad, precioUnitario, precioTotal)
 
             TextBoxCantidad.Clear()
+            ActualizarTotalCarrito()
         Catch ex As Exception
             MessageBox.Show("Error al agregar el producto: " & ex.Message)
         End Try
@@ -61,6 +62,7 @@
 
             Dim fila As DataGridViewRow = DataGridViewCarrito.SelectedRows(0)
             DataGridViewCarrito.Rows.Remove(fila)
+            ActualizarTotalCarrito()
         Catch ex As Exception
             MessageBox.Show("Error al eliminar el producto: " & ex.Message)
         End Try
@@ -103,5 +105,20 @@
         Catch ex As Exception
             MessageBox.Show("Error al finalizar la venta: " & ex.Message)
         End Try
+    End Sub
+    Private Sub ActualizarTotalCarrito()
+        Dim total As Decimal = 0
+        For Each fila As DataGridViewRow In DataGridViewCarrito.Rows
+            If Not fila.IsNewRow Then
+                total += Convert.ToDecimal(fila.Cells("Precio Total").Value)
+            End If
+        Next
+        LabelCarrito.Text = "Total: $" & total.ToString("N2")
+    End Sub
+
+
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles LabelCarrito.Click
+
     End Sub
 End Class

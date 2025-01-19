@@ -26,7 +26,7 @@ Partial Class Ventas
         Me.DataGridViewProductos = New System.Windows.Forms.DataGridView()
         Me.DataGridViewCarrito = New System.Windows.Forms.DataGridView()
         Me.TextBoxCantidad = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.LabelCarrito = New System.Windows.Forms.Label()
         Me.ButtonAgregar = New System.Windows.Forms.Button()
         Me.ButtonEliminar = New System.Windows.Forms.Button()
         Me.ButtonFinalizar = New System.Windows.Forms.Button()
@@ -69,14 +69,14 @@ Partial Class Ventas
         Me.TextBoxCantidad.Size = New System.Drawing.Size(100, 22)
         Me.TextBoxCantidad.TabIndex = 3
         '
-        'Label1
+        'LabelCarrito
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(378, 252)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(51, 17)
-        Me.Label1.TabIndex = 4
-        Me.Label1.Text = "Label1"
+        Me.LabelCarrito.AutoSize = True
+        Me.LabelCarrito.Location = New System.Drawing.Point(378, 252)
+        Me.LabelCarrito.Name = "LabelCarrito"
+        Me.LabelCarrito.Size = New System.Drawing.Size(96, 17)
+        Me.LabelCarrito.TabIndex = 4
+        Me.LabelCarrito.Text = "Total: $ 00.00"
         '
         'ButtonAgregar
         '
@@ -113,7 +113,7 @@ Partial Class Ventas
         Me.Controls.Add(Me.ButtonFinalizar)
         Me.Controls.Add(Me.ButtonEliminar)
         Me.Controls.Add(Me.ButtonAgregar)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.LabelCarrito)
         Me.Controls.Add(Me.TextBoxCantidad)
         Me.Controls.Add(Me.DataGridViewCarrito)
         Me.Controls.Add(Me.DataGridViewProductos)
@@ -131,7 +131,7 @@ Partial Class Ventas
     Friend WithEvents DataGridViewProductos As DataGridView
     Friend WithEvents DataGridViewCarrito As DataGridView
     Friend WithEvents TextBoxCantidad As TextBox
-    Friend WithEvents Label1 As Label
+    Friend WithEvents LabelCarrito As Label
     Friend WithEvents ButtonAgregar As Button
     Friend WithEvents ButtonEliminar As Button
     Friend WithEvents ButtonFinalizar As Button

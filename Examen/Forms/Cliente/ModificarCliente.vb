@@ -19,12 +19,11 @@
             End If
 
             Dim clientes As New ClassClientes()
-            Dim clienteEncontrado As DataRow = clientes.BuscarClientePorID(id)
-
+            Dim clienteEncontrado As Cliente = clientes.BuscarClientePorID(id)
             If clienteEncontrado IsNot Nothing Then
-                TextBoxCliente.Text = clienteEncontrado("Cliente").ToString()
-                TextBoxTelefono.Text = clienteEncontrado("Telefono").ToString()
-                TextBoxCorreo.Text = clienteEncontrado("Correo").ToString()
+                TextBoxCliente.Text = clienteEncontrado.Cliente
+                TextBoxTelefono.Text = clienteEncontrado.Telefono.ToString()
+                TextBoxCorreo.Text = clienteEncontrado.Correo
 
                 ControlVisibilityHelper.HacerVisibleControles(Me)
                 TextBoxBuscar.Enabled = False
@@ -39,8 +38,8 @@
     Private Sub ButtonModificar_Click(sender As Object, e As EventArgs) Handles ButtonModificar.Click
         Try
             If String.IsNullOrWhiteSpace(TextBoxCliente.Text) OrElse
-           String.IsNullOrWhiteSpace(TextBoxTelefono.Text) OrElse
-           String.IsNullOrWhiteSpace(TextBoxCorreo.Text) Then
+       String.IsNullOrWhiteSpace(TextBoxTelefono.Text) OrElse
+       String.IsNullOrWhiteSpace(TextBoxCorreo.Text) Then
                 MessageBox.Show("Por favor, complete todos los campos antes de modificar el cliente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Return
             End If
@@ -54,11 +53,13 @@
                 MessageBox.Show("Por favor, ingrese un número de telefono válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Return
             End If
+
+            Dim clienteObj As New Cliente(id, cliente, telefono, correo)
             Dim confirmacion As DialogResult = MessageBox.Show("¿Está seguro de que desea modificar este cliente?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
             If confirmacion = DialogResult.Yes Then
                 Dim clientes As New ClassClientes()
-                clientes.ModificarCliente(id, cliente, telefono, correo)
+                clientes.ModificarCliente(clienteObj)
                 MessageBox.Show("Cliente modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 TextBoxHelper.LimpiarTextBoxes(Me)
                 ControlVisibilityHelper.HacerInvisibleControles(Me)
@@ -79,13 +80,13 @@
         Try
             If clienteID.HasValue Then
                 Dim clientes As New ClassClientes()
-                Dim clienteEncontrado As DataRow = clientes.BuscarClientePorID(clienteID.Value)
+                Dim clienteEncontrado As Cliente = clientes.BuscarClientePorID(clienteID.Value)
 
                 If clienteEncontrado IsNot Nothing Then
                     TextBoxBuscar.Text = clienteID.Value.ToString()
-                    TextBoxCliente.Text = clienteEncontrado("Cliente").ToString()
-                    TextBoxTelefono.Text = clienteEncontrado("Telefono").ToString()
-                    TextBoxCorreo.Text = clienteEncontrado("Correo").ToString()
+                    TextBoxCliente.Text = clienteEncontrado.Cliente
+                    TextBoxTelefono.Text = clienteEncontrado.Telefono.ToString()
+                    TextBoxCorreo.Text = clienteEncontrado.Correo
 
                     ControlVisibilityHelper.HacerVisibleControles(Me)
                     TextBoxBuscar.Enabled = False
@@ -99,5 +100,4 @@
             MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
 End Class

@@ -1,12 +1,12 @@
 ﻿Public Class Cliente
     Public Property ID As Integer
-    Public Property Nombre As String
+    Public Property Cliente As String
     Public Property Telefono As Integer
     Public Property Correo As String
 
-    Public Sub New(id As Integer, nombre As String, telefono As Integer, correo As String)
+    Public Sub New(id As Integer, cliente As String, telefono As Integer, correo As String)
         Me.ID = id
-        Me.Nombre = nombre
+        Me.Cliente = cliente
         Me.Telefono = telefono
         Me.Correo = correo
 

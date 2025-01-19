@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Configuration
+
 Public Class ClassClientes
     Private Shared ReadOnly Property ConnectionString As String
         Get
@@ -7,28 +8,44 @@ Public Class ClassClientes
         End Get
     End Property
 
-    Public Function CargarDatos() As DataTable
+    Public Function CargarDatos() As List(Of Cliente)
         Dim query As String = "SELECT * FROM clientes"
-        Dim table As New DataTable()
+        Dim clientes As New List(Of Cliente)()
+
         Using connection As New SqlConnection(ConnectionString)
             Try
-                Dim adapter As New SqlDataAdapter(query, connection)
+                Dim command As New SqlCommand(query, connection)
                 connection.Open()
-                adapter.Fill(table)
+                Dim reader As SqlDataReader = command.ExecuteReader()
+
+                While reader.Read()
+                    Dim cliente As New Cliente(
+                        Convert.ToInt32(reader("ID")),
+                        reader("Cliente").ToString(),
+                        Convert.ToInt32(reader("Telefono")),
+                        reader("Correo").ToString()
+                    )
+                    clientes.Add(cliente)
+                End While
             Catch ex As Exception
                 Throw New Exception("Error al cargar los datos: " & ex.Message)
             End Try
         End Using
-        Return table
+        Return clientes
     End Function
 
-    Public Sub CrearCliente(cliente As String, telefono As Integer, correo As String)
+    Public Sub CrearCliente(cliente As Cliente)
+        If cliente Is Nothing Then
+            Throw New ArgumentNullException("El cliente no puede ser nulo")
+        End If
+
         Dim query As String = "INSERT INTO clientes (Cliente, Telefono, Correo) VALUES (@Cliente, @Telefono, @Correo)"
         Using connection As New SqlConnection(ConnectionString)
             Using command As New SqlCommand(query, connection)
-                command.Parameters.AddWithValue("@Cliente", cliente)
-                command.Parameters.AddWithValue("@Telefono", telefono)
-                command.Parameters.AddWithValue("@Correo", correo)
+                command.Parameters.AddWithValue("@Cliente", cliente.Cliente)
+                command.Parameters.AddWithValue("@Telefono", cliente.Telefono)
+                command.Parameters.AddWithValue("@Correo", cliente.Correo)
+
                 Try
                     connection.Open()
                     command.ExecuteNonQuery()
@@ -39,11 +56,34 @@ Public Class ClassClientes
         End Using
     End Sub
 
-    Public Sub EliminarCliente(ID As Integer)
+    Public Sub ModificarCliente(cliente As Cliente)
+        If cliente Is Nothing Then
+            Throw New ArgumentNullException("El cliente no puede ser nulo")
+        End If
+
+        Dim query As String = "UPDATE clientes SET Cliente = @Cliente, Telefono = @Telefono, Correo = @Correo WHERE ID = @ID"
+        Using connection As New SqlConnection(ConnectionString)
+            Using command As New SqlCommand(query, connection)
+                command.Parameters.AddWithValue("@ID", cliente.ID)
+                command.Parameters.AddWithValue("@Cliente", cliente.Cliente)
+                command.Parameters.AddWithValue("@Telefono", cliente.Telefono)
+                command.Parameters.AddWithValue("@Correo", cliente.Correo)
+
+                Try
+                    connection.Open()
+                    command.ExecuteNonQuery()
+                Catch ex As Exception
+                    Throw New Exception("Error al modificar el cliente: " & ex.Message)
+                End Try
+            End Using
+        End Using
+    End Sub
+
+    Public Sub EliminarCliente(id As Integer)
         Dim query As String = "DELETE FROM clientes WHERE ID = @ID"
         Using connection As New SqlConnection(ConnectionString)
             Using command As New SqlCommand(query, connection)
-                command.Parameters.AddWithValue("@ID", ID)
+                command.Parameters.AddWithValue("@ID", id)
                 Try
                     connection.Open()
                     command.ExecuteNonQuery()
@@ -54,43 +94,32 @@ Public Class ClassClientes
         End Using
     End Sub
 
-    Public Function BuscarClientePorID(id As Integer) As DataRow
+    Public Function BuscarClientePorID(id As Integer) As Cliente
         Dim query As String = "SELECT * FROM clientes WHERE ID = @ID"
+        Dim cliente As Cliente = Nothing
+
         Using connection As New SqlConnection(ConnectionString)
             Using command As New SqlCommand(query, connection)
                 command.Parameters.AddWithValue("@ID", id)
-                Dim adapter As New SqlDataAdapter(command)
-                Dim table As New DataTable()
+
                 Try
                     connection.Open()
-                    adapter.Fill(table)
-                    If table.Rows.Count > 0 Then
-                        Return table.Rows(0)
-                    Else
-                        Return Nothing
+                    Dim reader As SqlDataReader = command.ExecuteReader()
+
+                    If reader.Read() Then
+                        cliente = New Cliente(
+                            Convert.ToInt32(reader("ID")),
+                            reader("Cliente").ToString(),
+                            Convert.ToInt32(reader("Telefono")),
+                            reader("Correo").ToString()
+                        )
                     End If
                 Catch ex As Exception
-                    Throw New Exception("Error al buscar el cliente: " & ex.Message)
+                    Throw New Exception("Error al buscar el cliente por ID: " & ex.Message)
                 End Try
             End Using
         End Using
-    End Function
 
-    Public Sub ModificarCliente(id As Integer, cliente As String, telefono As Integer, correo As String)
-        Dim query As String = "UPDATE clientes SET Cliente = @Cliente, Telefono = @Telefono, Correo = @Correo WHERE ID = @ID"
-        Using connection As New SqlConnection(ConnectionString)
-            Using command As New SqlCommand(query, connection)
-                command.Parameters.AddWithValue("@ID", id)
-                command.Parameters.AddWithValue("@Cliente", cliente)
-                command.Parameters.AddWithValue("@Telefono", telefono)
-                command.Parameters.AddWithValue("@Correo", correo)
-                Try
-                    connection.Open()
-                    command.ExecuteNonQuery()
-                Catch ex As Exception
-                    Throw New Exception("Error al modificar el cliente: " & ex.Message)
-                End Try
-            End Using
-        End Using
-    End Sub
+        Return cliente
+    End Function
 End Class

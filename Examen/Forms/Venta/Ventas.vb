@@ -15,7 +15,6 @@
             ComboBoxClientes.DataSource = clientes.CargarDatos()
             ComboBoxClientes.DisplayMember = "Nombre"
             ComboBoxClientes.ValueMember = "ID"
-
             Dim productos As New ClassProductos()
             DataGridViewProductos.DataSource = productos.CargarDatos()
 
@@ -55,7 +54,6 @@
             Dim precioTotal As Decimal = precioUnitario * cantidad
             Dim carrito As DataTable = TryCast(DataGridViewCarrito.DataSource, DataTable)
             carrito.Rows.Add(idProducto, nombreProducto, cantidad, precioUnitario, precioTotal)
-
             TextBoxCantidad.Clear()
             ActualizarTotalCarrito()
         Catch ex As Exception

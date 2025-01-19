@@ -1,5 +1,5 @@
 ﻿Public Class Clientes
-    Private tablaClientes As DataTable
+    Private clientes As List(Of Cliente)
 
     Private Sub Clientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
@@ -8,9 +8,9 @@
             DataGridView1.MultiSelect = False
             DataGridView1.ReadOnly = True
             DataGridView1.AllowUserToAddRows = False
-            Dim clientes As New ClassClientes()
-            tablaClientes = clientes.CargarDatos()
-            DataGridView1.DataSource = tablaClientes
+            Dim classClientes As New ClassClientes()
+            clientes = classClientes.CargarDatos()
+            DataGridView1.DataSource = clientes
             LlenarComboBoxCorreo()
             LlenarComboBoxOrdenar()
         Catch ex As Exception
@@ -20,10 +20,7 @@
 
     Private Sub LlenarComboBoxCorreo()
         Try
-            Dim dominiosCorreo = tablaClientes.AsEnumerable().
-                Select(Function(row) row.Field(Of String)("Correo").Split("@"c).Last()).
-                Distinct()
-
+            Dim dominiosCorreo = clientes.Select(Function(c) c.Correo.Split("@"c).Last()).Distinct()
             ComboBoxCorreo.Items.Clear()
             ComboBoxCorreo.Items.Add("Todos")
             ComboBoxCorreo.Items.AddRange(dominiosCorreo.ToArray())
@@ -45,31 +42,24 @@
             Dim textoFiltro As String = TextBoxCliente.Text.ToLower()
             Dim correoFiltro As String = ComboBoxCorreo.SelectedItem?.ToString()
             Dim ordenamiento As String = ComboBoxOrdenar.SelectedItem?.ToString()
-            Dim vista As New DataView(tablaClientes)
-            Dim filtro As String = ""
+            Dim clientesFiltrados = clientes.AsEnumerable()
 
             If Not String.IsNullOrEmpty(textoFiltro) Then
-                filtro = $"Cliente LIKE '%{textoFiltro}%'"
+                clientesFiltrados = clientesFiltrados.Where(Function(c) c.Cliente.ToLower().Contains(textoFiltro))
             End If
 
             If correoFiltro <> "Todos" Then
-                If Not String.IsNullOrEmpty(filtro) Then
-                    filtro &= " AND "
-                End If
-                filtro &= $"Correo LIKE '%@{correoFiltro}'"
+                clientesFiltrados = clientesFiltrados.Where(Function(c) c.Correo.Contains($"@{correoFiltro}"))
             End If
-
-            vista.RowFilter = filtro
-
 
             Select Case ordenamiento
                 Case "Nombre (A-Z)"
-                    vista.Sort = "Cliente ASC"
+                    clientesFiltrados = clientesFiltrados.OrderBy(Function(c) c.Cliente)
                 Case "Nombre (Z-A)"
-                    vista.Sort = "Cliente DESC"
+                    clientesFiltrados = clientesFiltrados.OrderByDescending(Function(c) c.Cliente)
             End Select
 
-            DataGridView1.DataSource = vista
+            DataGridView1.DataSource = clientesFiltrados.ToList()
         Catch ex As Exception
             MessageBox.Show("Error al aplicar filtros y ordenamiento: " & ex.Message)
         End Try
@@ -91,9 +81,9 @@
         Try
             Dim agregarClienteForm As New AgregarCliente()
             agregarClienteForm.ShowDialog()
-            Dim clientes As New ClassClientes()
-            tablaClientes = clientes.CargarDatos()
-            DataGridView1.DataSource = tablaClientes
+            Dim classClientes As New ClassClientes()
+            clientes = classClientes.CargarDatos()
+            DataGridView1.DataSource = clientes
         Catch ex As Exception
             MessageBox.Show("Error al agregar cliente: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -106,14 +96,14 @@
                 Dim id As Integer = Convert.ToInt32(filaSeleccionada.Cells("ID").Value)
                 Dim modificarFormulario As New ModificarCliente(id)
                 modificarFormulario.ShowDialog()
-                Dim clientes As New ClassClientes()
-                tablaClientes = Clientes.CargarDatos()
-                DataGridView1.DataSource = tablaClientes
+                Dim classClientes As New ClassClientes()
+                clientes = classClientes.CargarDatos()
+                DataGridView1.DataSource = clientes
             Else
                 Dim modificarFormulario As New ModificarCliente()
-                Dim clientes As New ClassClientes()
-                tablaClientes = Clientes.CargarDatos()
-                DataGridView1.DataSource = tablaClientes
+                Dim classClientes As New ClassClientes()
+                clientes = classClientes.CargarDatos()
+                DataGridView1.DataSource = clientes
                 modificarFormulario.ShowDialog()
             End If
         Catch ex As Exception
@@ -123,24 +113,22 @@
 
     Private Sub ButtonEliminar_Click(sender As Object, e As EventArgs) Handles ButtonEliminar.Click
         Try
-
             If DataGridView1.SelectedRows.Count = 0 Then
                 MessageBox.Show("Por favor, seleccione un cliente para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Return
             End If
 
-
             Dim confirmacion As DialogResult = MessageBox.Show("¿Está seguro de que desea eliminar este cliente?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
             If confirmacion = DialogResult.Yes Then
                 Dim filaSeleccionada As DataGridViewRow = DataGridView1.SelectedRows(0)
                 Dim ID As Integer = Convert.ToInt32(filaSeleccionada.Cells("ID").Value)
-                Dim clientes As New ClassClientes()
-                clientes.EliminarCliente(ID)
+                Dim classClientes As New ClassClientes()
+                classClientes.EliminarCliente(ID)
 
                 MessageBox.Show("Cliente eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                tablaClientes = clientes.CargarDatos()
-                DataGridView1.DataSource = tablaClientes
+                clientes = classClientes.CargarDatos()
+                DataGridView1.DataSource = clientes
             Else
                 MessageBox.Show("Operación cancelada.", "Cancelar", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If

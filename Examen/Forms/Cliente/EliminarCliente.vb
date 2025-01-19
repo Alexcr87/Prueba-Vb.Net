@@ -2,7 +2,22 @@
     Private Sub EliminarCliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             Dim clientes As New ClassClientes()
-            Dim tablaClientes As DataTable = clientes.CargarDatos()
+            Dim listaClientes As List(Of Cliente) = clientes.CargarDatos()
+            Dim tablaClientes As New DataTable()
+            tablaClientes.Columns.Add("ID")
+            tablaClientes.Columns.Add("Cliente")
+            tablaClientes.Columns.Add("Telefono")
+            tablaClientes.Columns.Add("Correo")
+
+            For Each cliente As Cliente In listaClientes
+                Dim row As DataRow = tablaClientes.NewRow()
+                row("ID") = cliente.ID
+                row("Cliente") = cliente.Cliente
+                row("Telefono") = cliente.Telefono
+                row("Correo") = cliente.Correo
+                tablaClientes.Rows.Add(row)
+            Next
+
             DataGridView1.DataSource = tablaClientes
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message)
@@ -32,17 +47,28 @@
                 MessageBox.Show("Cliente eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 TextBoxBuscar.Clear()
                 Label1.Text = String.Empty
-                Dim tablaProductos As DataTable = clientes.CargarDatos()
-                DataGridView1.DataSource = tablaProductos
+                Dim listaClientes As List(Of Cliente) = clientes.CargarDatos()
+                Dim tablaClientes As New DataTable()
+                tablaClientes.Columns.Add("ID")
+                tablaClientes.Columns.Add("Cliente")
+                tablaClientes.Columns.Add("Telefono")
+                tablaClientes.Columns.Add("Correo")
+
+                For Each cliente As Cliente In listaClientes
+                    Dim row As DataRow = tablaClientes.NewRow()
+                    row("ID") = cliente.ID
+                    row("Cliente") = cliente.Cliente
+                    row("Telefono") = cliente.Telefono
+                    row("Correo") = cliente.Correo
+                    tablaClientes.Rows.Add(row)
+                Next
+
+                DataGridView1.DataSource = tablaClientes
             Else
                 MessageBox.Show("Operación cancelada.", "Cancelar", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
-
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-
     End Sub
 End Class

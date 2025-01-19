@@ -75,8 +75,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\ClassProductos.vb" />
-    <Compile Include="Models\Cliente.vb" />
+    <Compile Include="Models\ClassProducto.vb" />
+    <Compile Include="Services\ClassVentas.vb" />
+    <Compile Include="Services\ClassProductos.vb" />
+    <Compile Include="Models\Venta.vb" />
+    <Compile Include="Models\VentaDetalle.vb" />
+    <Compile Include="Models\ClassCliente.vb" />
     <Compile Include="Services\ClassClientes.vb" />
     <Compile Include="Forms\Cliente\Clientes.Designer.vb">
       <DependentUpon>Clientes.vb</DependentUpon>
@@ -208,9 +212,7 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Clientes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\Clientes.jpg" />
   </ItemGroup>

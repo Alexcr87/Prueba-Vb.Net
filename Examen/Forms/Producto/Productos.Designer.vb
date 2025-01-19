@@ -41,9 +41,9 @@ Partial Class Productos
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(158, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(468, 55)
+        Me.Label1.Size = New System.Drawing.Size(496, 55)
         Me.Label1.TabIndex = 3
-        Me.Label1.Text = "Listado de Prductos"
+        Me.Label1.Text = "Listado de Productos"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'DataGridView1
@@ -52,6 +52,7 @@ Partial Class Productos
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(55, 117)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 51
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.Size = New System.Drawing.Size(691, 280)

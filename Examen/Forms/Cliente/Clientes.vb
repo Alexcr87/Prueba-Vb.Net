@@ -3,6 +3,7 @@
 
     Private Sub Clientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+            DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
             DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
             DataGridView1.MultiSelect = False
             DataGridView1.ReadOnly = True

@@ -31,6 +31,7 @@ Partial Class Clientes
         Me.TextBoxCliente = New System.Windows.Forms.TextBox()
         Me.ComboBoxOrdenar = New System.Windows.Forms.ComboBox()
         Me.ComboBoxCorreo = New System.Windows.Forms.ComboBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -40,6 +41,7 @@ Partial Class Clientes
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(47, 112)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 51
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.Size = New System.Drawing.Size(691, 280)
@@ -86,7 +88,7 @@ Partial Class Clientes
         '
         'TextBoxCliente
         '
-        Me.TextBoxCliente.Location = New System.Drawing.Point(120, 84)
+        Me.TextBoxCliente.Location = New System.Drawing.Point(165, 84)
         Me.TextBoxCliente.Name = "TextBoxCliente"
         Me.TextBoxCliente.Size = New System.Drawing.Size(147, 22)
         Me.TextBoxCliente.TabIndex = 5
@@ -107,11 +109,21 @@ Partial Class Clientes
         Me.ComboBoxCorreo.Size = New System.Drawing.Size(121, 24)
         Me.ComboBoxCorreo.TabIndex = 12
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(63, 85)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(155, 17)
+        Me.Label2.TabIndex = 13
+        Me.Label2.Text = "Busqueda por Nombre:"
+        '
         'Clientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.ComboBoxCorreo)
         Me.Controls.Add(Me.ComboBoxOrdenar)
         Me.Controls.Add(Me.TextBoxCliente)
@@ -137,4 +149,5 @@ Partial Class Clientes
     Friend WithEvents TextBoxCliente As TextBox
     Friend WithEvents ComboBoxOrdenar As ComboBox
     Friend WithEvents ComboBoxCorreo As ComboBox
+    Friend WithEvents Label2 As Label
 End Class

@@ -47,26 +47,28 @@ Partial Class Ventas
         'DataGridViewProductos
         '
         Me.DataGridViewProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewProductos.Location = New System.Drawing.Point(85, 88)
+        Me.DataGridViewProductos.Location = New System.Drawing.Point(110, 78)
         Me.DataGridViewProductos.Name = "DataGridViewProductos"
+        Me.DataGridViewProductos.RowHeadersVisible = False
         Me.DataGridViewProductos.RowHeadersWidth = 51
         Me.DataGridViewProductos.RowTemplate.Height = 24
-        Me.DataGridViewProductos.Size = New System.Drawing.Size(240, 150)
+        Me.DataGridViewProductos.Size = New System.Drawing.Size(722, 175)
         Me.DataGridViewProductos.TabIndex = 1
         '
         'DataGridViewCarrito
         '
         Me.DataGridViewCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewCarrito.Location = New System.Drawing.Point(497, 88)
+        Me.DataGridViewCarrito.Location = New System.Drawing.Point(110, 289)
         Me.DataGridViewCarrito.Name = "DataGridViewCarrito"
+        Me.DataGridViewCarrito.RowHeadersVisible = False
         Me.DataGridViewCarrito.RowHeadersWidth = 51
         Me.DataGridViewCarrito.RowTemplate.Height = 24
-        Me.DataGridViewCarrito.Size = New System.Drawing.Size(240, 150)
+        Me.DataGridViewCarrito.Size = New System.Drawing.Size(722, 163)
         Me.DataGridViewCarrito.TabIndex = 2
         '
         'TextBoxCantidad
         '
-        Me.TextBoxCantidad.Location = New System.Drawing.Point(350, 121)
+        Me.TextBoxCantidad.Location = New System.Drawing.Point(866, 135)
         Me.TextBoxCantidad.Name = "TextBoxCantidad"
         Me.TextBoxCantidad.Size = New System.Drawing.Size(100, 22)
         Me.TextBoxCantidad.TabIndex = 3
@@ -74,35 +76,36 @@ Partial Class Ventas
         'LabelCarrito
         '
         Me.LabelCarrito.AutoSize = True
-        Me.LabelCarrito.Location = New System.Drawing.Point(347, 262)
+        Me.LabelCarrito.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelCarrito.Location = New System.Drawing.Point(403, 485)
         Me.LabelCarrito.Name = "LabelCarrito"
-        Me.LabelCarrito.Size = New System.Drawing.Size(96, 17)
+        Me.LabelCarrito.Size = New System.Drawing.Size(146, 25)
         Me.LabelCarrito.TabIndex = 4
         Me.LabelCarrito.Text = "Total: $ 00.00"
         '
         'ButtonAgregar
         '
-        Me.ButtonAgregar.Location = New System.Drawing.Point(357, 169)
+        Me.ButtonAgregar.Location = New System.Drawing.Point(866, 176)
         Me.ButtonAgregar.Name = "ButtonAgregar"
-        Me.ButtonAgregar.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonAgregar.Size = New System.Drawing.Size(90, 30)
         Me.ButtonAgregar.TabIndex = 5
         Me.ButtonAgregar.Text = "Agregar"
         Me.ButtonAgregar.UseVisualStyleBackColor = True
         '
         'ButtonEliminar
         '
-        Me.ButtonEliminar.Location = New System.Drawing.Point(357, 215)
+        Me.ButtonEliminar.Location = New System.Drawing.Point(866, 323)
         Me.ButtonEliminar.Name = "ButtonEliminar"
-        Me.ButtonEliminar.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonEliminar.Size = New System.Drawing.Size(90, 30)
         Me.ButtonEliminar.TabIndex = 6
         Me.ButtonEliminar.Text = "Eliminar"
         Me.ButtonEliminar.UseVisualStyleBackColor = True
         '
         'ButtonFinalizar
         '
-        Me.ButtonFinalizar.Location = New System.Drawing.Point(357, 293)
+        Me.ButtonFinalizar.Location = New System.Drawing.Point(866, 393)
         Me.ButtonFinalizar.Name = "ButtonFinalizar"
-        Me.ButtonFinalizar.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonFinalizar.Size = New System.Drawing.Size(90, 30)
         Me.ButtonFinalizar.TabIndex = 7
         Me.ButtonFinalizar.Text = "Finalizar"
         Me.ButtonFinalizar.UseVisualStyleBackColor = True
@@ -119,7 +122,7 @@ Partial Class Ventas
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(354, 88)
+        Me.Label2.Location = New System.Drawing.Point(881, 98)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(68, 17)
         Me.Label2.TabIndex = 9
@@ -129,7 +132,7 @@ Partial Class Ventas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(1106, 573)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ButtonFinalizar)

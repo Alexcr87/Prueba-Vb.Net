@@ -1,4 +1,10 @@
 ﻿Public Class ModificarCliente
+    Private clienteID As Integer?
+
+    Public Sub New(Optional ByVal id As Integer? = Nothing)
+        InitializeComponent()
+        clienteID = id
+    End Sub
     Private Sub ButtonBuscar_Click(sender As Object, e As EventArgs) Handles ButtonBuscar.Click
         Try
             If String.IsNullOrWhiteSpace(TextBoxBuscar.Text) Then
@@ -67,5 +73,30 @@
         TextBoxHelper.LimpiarTextBoxes(Me)
         ControlVisibilityHelper.HacerInvisibleControles(Me)
         TextBoxBuscar.Enabled = True
+    End Sub
+
+    Private Sub ModificarCliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Try
+            If clienteID.HasValue Then
+                Dim clientes As New ClassClientes()
+                Dim clienteEncontrado As DataRow = clientes.BuscarClientePorID(clienteID.Value)
+
+                If clienteEncontrado IsNot Nothing Then
+                    TextBoxBuscar.Text = clienteID.Value.ToString()
+                    TextBoxCliente.Text = clienteEncontrado("Cliente").ToString()
+                    TextBoxTelefono.Text = clienteEncontrado("Telefono").ToString()
+                    TextBoxCorreo.Text = clienteEncontrado("Correo").ToString()
+
+                    ControlVisibilityHelper.HacerVisibleControles(Me)
+                    TextBoxBuscar.Enabled = False
+                Else
+                    MessageBox.Show("No se encontró un cliente con el ID proporcionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            Else
+                ControlVisibilityHelper.HacerInvisibleControles(Me)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 End Class

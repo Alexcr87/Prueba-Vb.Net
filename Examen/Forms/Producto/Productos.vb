@@ -2,6 +2,10 @@
     Private tablaProductos As DataTable
     Private Sub Productos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+            DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+            DataGridView1.MultiSelect = False
+            DataGridView1.ReadOnly = True
+            DataGridView1.AllowUserToAddRows = False
             Dim productos As New ClassProductos()
             tablaProductos = productos.CargarDatos()
             DataGridView1.DataSource = tablaProductos
@@ -92,5 +96,34 @@
 
     Private Sub ComboBoxOrdenar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxOrdenar.SelectedIndexChanged
         AplicarFiltro()
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
+    End Sub
+
+    Private Sub ButtonEliminar_Click(sender As Object, e As EventArgs) Handles ButtonEliminar.Click
+        Try
+            If DataGridView1.SelectedRows.Count = 0 Then
+                MessageBox.Show("Por favor, seleccione un producto para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+            Dim confirmacion As DialogResult = MessageBox.Show("¿Está seguro de que desea eliminar este producto?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+            If confirmacion = DialogResult.Yes Then
+                Dim filaSeleccionada As DataGridViewRow = DataGridView1.SelectedRows(0)
+                Dim ID As Integer = Convert.ToInt32(filaSeleccionada.Cells("ID").Value)
+                Dim productos As New ClassProductos()
+                productos.EliminarProducto(ID)
+
+                MessageBox.Show("Producto eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                tablaProductos = productos.CargarDatos()
+                DataGridView1.DataSource = tablaProductos
+            Else
+                MessageBox.Show("Operación cancelada.", "Cancelar", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error al eliminar el producto: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 End Class

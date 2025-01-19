@@ -3,6 +3,10 @@
 
     Private Sub Clientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+            DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+            DataGridView1.MultiSelect = False
+            DataGridView1.ReadOnly = True
+            DataGridView1.AllowUserToAddRows = False
             Dim clientes As New ClassClientes()
             tablaClientes = clientes.CargarDatos()
             DataGridView1.DataSource = tablaClientes
@@ -83,12 +87,64 @@
     End Sub
 
     Private Sub ButtonAgregar_Click(sender As Object, e As EventArgs) Handles ButtonAgregar.Click
-        AgregarCliente.Show()
+        Try
+            Dim agregarClienteForm As New AgregarCliente()
+            agregarClienteForm.ShowDialog()
+            Dim clientes As New ClassClientes()
+            tablaClientes = clientes.CargarDatos()
+            DataGridView1.DataSource = tablaClientes
+        Catch ex As Exception
+            MessageBox.Show("Error al agregar cliente: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub ButtonModificar_Click(sender As Object, e As EventArgs) Handles ButtonModificar.Click
-        ModificarCliente.Show()
+        Try
+            If DataGridView1.SelectedRows.Count > 0 Then
+                Dim filaSeleccionada As DataGridViewRow = DataGridView1.SelectedRows(0)
+                Dim id As Integer = Convert.ToInt32(filaSeleccionada.Cells("ID").Value)
+                Dim modificarFormulario As New ModificarCliente(id)
+                modificarFormulario.ShowDialog()
+                Dim clientes As New ClassClientes()
+                tablaClientes = Clientes.CargarDatos()
+                DataGridView1.DataSource = tablaClientes
+            Else
+                Dim modificarFormulario As New ModificarCliente()
+                Dim clientes As New ClassClientes()
+                tablaClientes = Clientes.CargarDatos()
+                DataGridView1.DataSource = tablaClientes
+                modificarFormulario.ShowDialog()
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error al abrir el formulario de modificación: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
+    Private Sub ButtonEliminar_Click(sender As Object, e As EventArgs) Handles ButtonEliminar.Click
+        Try
 
+            If DataGridView1.SelectedRows.Count = 0 Then
+                MessageBox.Show("Por favor, seleccione un cliente para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+
+            Dim confirmacion As DialogResult = MessageBox.Show("¿Está seguro de que desea eliminar este cliente?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+            If confirmacion = DialogResult.Yes Then
+                Dim filaSeleccionada As DataGridViewRow = DataGridView1.SelectedRows(0)
+                Dim ID As Integer = Convert.ToInt32(filaSeleccionada.Cells("ID").Value)
+                Dim clientes As New ClassClientes()
+                clientes.EliminarCliente(ID)
+
+                MessageBox.Show("Cliente eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                tablaClientes = clientes.CargarDatos()
+                DataGridView1.DataSource = tablaClientes
+            Else
+                MessageBox.Show("Operación cancelada.", "Cancelar", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error al eliminar el cliente: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class

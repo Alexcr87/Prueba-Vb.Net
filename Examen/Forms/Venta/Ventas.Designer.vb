@@ -30,6 +30,8 @@ Partial Class Ventas
         Me.ButtonAgregar = New System.Windows.Forms.Button()
         Me.ButtonEliminar = New System.Windows.Forms.Button()
         Me.ButtonFinalizar = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.DataGridViewProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewCarrito, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -37,7 +39,7 @@ Partial Class Ventas
         'ComboBoxClientes
         '
         Me.ComboBoxClientes.FormattingEnabled = True
-        Me.ComboBoxClientes.Location = New System.Drawing.Point(85, 41)
+        Me.ComboBoxClientes.Location = New System.Drawing.Point(166, 41)
         Me.ComboBoxClientes.Name = "ComboBoxClientes"
         Me.ComboBoxClientes.Size = New System.Drawing.Size(121, 24)
         Me.ComboBoxClientes.TabIndex = 0
@@ -64,7 +66,7 @@ Partial Class Ventas
         '
         'TextBoxCantidad
         '
-        Me.TextBoxCantidad.Location = New System.Drawing.Point(271, 43)
+        Me.TextBoxCantidad.Location = New System.Drawing.Point(350, 121)
         Me.TextBoxCantidad.Name = "TextBoxCantidad"
         Me.TextBoxCantidad.Size = New System.Drawing.Size(100, 22)
         Me.TextBoxCantidad.TabIndex = 3
@@ -72,7 +74,7 @@ Partial Class Ventas
         'LabelCarrito
         '
         Me.LabelCarrito.AutoSize = True
-        Me.LabelCarrito.Location = New System.Drawing.Point(378, 252)
+        Me.LabelCarrito.Location = New System.Drawing.Point(347, 262)
         Me.LabelCarrito.Name = "LabelCarrito"
         Me.LabelCarrito.Size = New System.Drawing.Size(96, 17)
         Me.LabelCarrito.TabIndex = 4
@@ -80,7 +82,7 @@ Partial Class Ventas
         '
         'ButtonAgregar
         '
-        Me.ButtonAgregar.Location = New System.Drawing.Point(147, 299)
+        Me.ButtonAgregar.Location = New System.Drawing.Point(357, 169)
         Me.ButtonAgregar.Name = "ButtonAgregar"
         Me.ButtonAgregar.Size = New System.Drawing.Size(75, 23)
         Me.ButtonAgregar.TabIndex = 5
@@ -89,7 +91,7 @@ Partial Class Ventas
         '
         'ButtonEliminar
         '
-        Me.ButtonEliminar.Location = New System.Drawing.Point(296, 299)
+        Me.ButtonEliminar.Location = New System.Drawing.Point(357, 215)
         Me.ButtonEliminar.Name = "ButtonEliminar"
         Me.ButtonEliminar.Size = New System.Drawing.Size(75, 23)
         Me.ButtonEliminar.TabIndex = 6
@@ -98,18 +100,38 @@ Partial Class Ventas
         '
         'ButtonFinalizar
         '
-        Me.ButtonFinalizar.Location = New System.Drawing.Point(441, 299)
+        Me.ButtonFinalizar.Location = New System.Drawing.Point(357, 293)
         Me.ButtonFinalizar.Name = "ButtonFinalizar"
         Me.ButtonFinalizar.Size = New System.Drawing.Size(75, 23)
         Me.ButtonFinalizar.TabIndex = 7
         Me.ButtonFinalizar.Text = "Finalizar"
         Me.ButtonFinalizar.UseVisualStyleBackColor = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(63, 44)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(94, 17)
+        Me.Label1.TabIndex = 8
+        Me.Label1.Text = "Nº de Cliente:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(354, 88)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(68, 17)
+        Me.Label2.TabIndex = 9
+        Me.Label2.Text = "Cantidad:"
+        '
         'Ventas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ButtonFinalizar)
         Me.Controls.Add(Me.ButtonEliminar)
         Me.Controls.Add(Me.ButtonAgregar)
@@ -135,4 +157,6 @@ Partial Class Ventas
     Friend WithEvents ButtonAgregar As Button
     Friend WithEvents ButtonEliminar As Button
     Friend WithEvents ButtonFinalizar As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
 End Class

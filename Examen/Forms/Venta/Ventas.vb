@@ -1,6 +1,14 @@
 ﻿Public Class Ventas
     Private Sub Ventas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+            DataGridViewProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+            DataGridViewProductos.MultiSelect = False
+            DataGridViewProductos.ReadOnly = True
+            DataGridViewProductos.AllowUserToAddRows = False
+            DataGridViewCarrito.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+            DataGridViewCarrito.MultiSelect = False
+            DataGridViewCarrito.ReadOnly = True
+            DataGridViewCarrito.AllowUserToAddRows = False
             Dim clientes As New ClassClientes()
             ComboBoxClientes.DataSource = clientes.CargarDatos()
             ComboBoxClientes.DisplayMember = "Nombre"
@@ -119,6 +127,14 @@
 
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles LabelCarrito.Click
+
+    End Sub
+
+    Private Sub TextBoxCantidad_TextChanged(sender As Object, e As EventArgs) Handles TextBoxCantidad.TextChanged
+
+    End Sub
+
+    Private Sub DataGridViewProductos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewProductos.CellContentClick
 
     End Sub
 End Class

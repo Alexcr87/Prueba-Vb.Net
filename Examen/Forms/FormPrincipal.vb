@@ -16,7 +16,8 @@
     End Sub
 
     Private Sub ModificarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ModificarToolStripMenuItem.Click
-        ModificarCliente.Show()
+        Dim modificarFormulario As New ModificarCliente()
+        modificarFormulario.ShowDialog()
     End Sub
 
     Private Sub EliminarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EliminarToolStripMenuItem.Click

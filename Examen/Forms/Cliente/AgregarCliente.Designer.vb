@@ -29,6 +29,7 @@ Partial Class AgregarCliente
         Me.LabelTelefono = New System.Windows.Forms.Label()
         Me.LabelCliente = New System.Windows.Forms.Label()
         Me.ButtonAgregar = New System.Windows.Forms.Button()
+        Me.ButtonCancelar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'TextBoxCorreo
@@ -81,18 +82,28 @@ Partial Class AgregarCliente
         '
         'ButtonAgregar
         '
-        Me.ButtonAgregar.Location = New System.Drawing.Point(316, 205)
+        Me.ButtonAgregar.Location = New System.Drawing.Point(269, 205)
         Me.ButtonAgregar.Name = "ButtonAgregar"
         Me.ButtonAgregar.Size = New System.Drawing.Size(85, 31)
         Me.ButtonAgregar.TabIndex = 15
         Me.ButtonAgregar.Text = "Agregar"
         Me.ButtonAgregar.UseVisualStyleBackColor = True
         '
+        'ButtonCancelar
+        '
+        Me.ButtonCancelar.Location = New System.Drawing.Point(403, 205)
+        Me.ButtonCancelar.Name = "ButtonCancelar"
+        Me.ButtonCancelar.Size = New System.Drawing.Size(80, 31)
+        Me.ButtonCancelar.TabIndex = 16
+        Me.ButtonCancelar.Text = "Cancelar"
+        Me.ButtonCancelar.UseVisualStyleBackColor = True
+        '
         'AgregarCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.ButtonCancelar)
         Me.Controls.Add(Me.ButtonAgregar)
         Me.Controls.Add(Me.TextBoxCorreo)
         Me.Controls.Add(Me.TextBoxTelefono)
@@ -114,4 +125,5 @@ Partial Class AgregarCliente
     Friend WithEvents LabelTelefono As Label
     Friend WithEvents LabelCliente As Label
     Friend WithEvents ButtonAgregar As Button
+    Friend WithEvents ButtonCancelar As Button
 End Class

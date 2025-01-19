@@ -1,4 +1,10 @@
 ﻿Public Class ModificarProducto
+    Private productoID As Integer?
+
+    Public Sub New(Optional ByVal id As Integer? = Nothing)
+        InitializeComponent()
+        productoID = id
+    End Sub
     Private Sub ButtonBuscar_Click(sender As Object, e As EventArgs) Handles ButtonBuscar.Click
         Try
             If String.IsNullOrWhiteSpace(TextBoxBuscar.Text) Then
@@ -67,5 +73,30 @@
         TextBoxHelper.LimpiarTextBoxes(Me)
         ControlVisibilityHelper.HacerInvisibleControles(Me)
         TextBoxBuscar.Enabled = True
+    End Sub
+
+    Private Sub ModificarProducto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Try
+            If productoID.HasValue Then
+                Dim productos As New ClassProductos()
+                Dim productoEncontrado As DataRow = productos.BuscarProductoPorID(productoID.Value)
+
+                If productoEncontrado IsNot Nothing Then
+                    TextBoxBuscar.Text = productoID.Value.ToString()
+                    TextBoxNombre.Text = productoEncontrado("Nombre").ToString()
+                    TextBoxPrecio.Text = productoEncontrado("Precio").ToString()
+                    TextBoxCategoria.Text = productoEncontrado("Categoria").ToString()
+
+                    ControlVisibilityHelper.HacerVisibleControles(Me)
+                    TextBoxBuscar.Enabled = False
+                Else
+                    MessageBox.Show("No se encontró un producto con el ID proporcionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+            Else
+                ControlVisibilityHelper.HacerInvisibleControles(Me)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 End Class

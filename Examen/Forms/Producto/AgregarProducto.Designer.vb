@@ -29,6 +29,7 @@ Partial Class AgregarProducto
         Me.LabelCategoria = New System.Windows.Forms.Label()
         Me.LabelPrecio = New System.Windows.Forms.Label()
         Me.LabelNombre = New System.Windows.Forms.Label()
+        Me.ButtonCancelar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'TextBoxCategoria
@@ -47,7 +48,7 @@ Partial Class AgregarProducto
         '
         'ButtonAgregar
         '
-        Me.ButtonAgregar.Location = New System.Drawing.Point(354, 299)
+        Me.ButtonAgregar.Location = New System.Drawing.Point(309, 299)
         Me.ButtonAgregar.Name = "ButtonAgregar"
         Me.ButtonAgregar.Size = New System.Drawing.Size(75, 23)
         Me.ButtonAgregar.TabIndex = 4
@@ -88,11 +89,21 @@ Partial Class AgregarProducto
         Me.LabelNombre.TabIndex = 7
         Me.LabelNombre.Text = "Nombre"
         '
+        'ButtonCancelar
+        '
+        Me.ButtonCancelar.Location = New System.Drawing.Point(443, 299)
+        Me.ButtonCancelar.Name = "ButtonCancelar"
+        Me.ButtonCancelar.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonCancelar.TabIndex = 10
+        Me.ButtonCancelar.Text = "Cancelar"
+        Me.ButtonCancelar.UseVisualStyleBackColor = True
+        '
         'AgregarProducto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.ButtonCancelar)
         Me.Controls.Add(Me.TextBoxCategoria)
         Me.Controls.Add(Me.TextBoxPrecio)
         Me.Controls.Add(Me.ButtonAgregar)
@@ -114,4 +125,5 @@ Partial Class AgregarProducto
     Friend WithEvents LabelCategoria As Label
     Friend WithEvents LabelPrecio As Label
     Friend WithEvents LabelNombre As Label
+    Friend WithEvents ButtonCancelar As Button
 End Class

@@ -75,12 +75,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\ClassProducto.vb" />
+    <Compile Include="Models\Producto.vb" />
     <Compile Include="Services\ClassVentas.vb" />
     <Compile Include="Services\ClassProductos.vb" />
     <Compile Include="Models\Venta.vb" />
     <Compile Include="Models\VentaDetalle.vb" />
-    <Compile Include="Models\ClassCliente.vb" />
+    <Compile Include="Models\Cliente.vb" />
     <Compile Include="Services\ClassClientes.vb" />
     <Compile Include="Forms\Cliente\Clientes.Designer.vb">
       <DependentUpon>Clientes.vb</DependentUpon>

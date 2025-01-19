@@ -12,4 +12,8 @@
             MessageBox.Show("Error: " & ex.Message)
         End Try
     End Sub
+
+    Private Sub ButtonCancelar_Click(sender As Object, e As EventArgs) Handles ButtonCancelar.Click
+        Me.Close()
+    End Sub
 End Class

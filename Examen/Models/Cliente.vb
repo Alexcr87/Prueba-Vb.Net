@@ -1,4 +1,4 @@
-﻿Public Class ClassCliente
+﻿Public Class Cliente
     Public Property ID As Integer
     Public Property Nombre As String
     Public Property Telefono As Integer

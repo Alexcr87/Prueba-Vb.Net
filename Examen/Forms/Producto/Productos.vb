@@ -35,7 +35,15 @@
     End Sub
 
     Private Sub ButtonAgregar_Click(sender As Object, e As EventArgs) Handles ButtonAgregar.Click
-        AgregarProducto.Show()
+        Try
+            Dim agregarProductosForm As New AgregarProducto()
+            agregarProductosForm.ShowDialog()
+            Dim productos As New ClassProductos()
+            tablaProductos = productos.CargarDatos()
+            DataGridView1.DataSource = tablaProductos
+        Catch ex As Exception
+            MessageBox.Show("Error al agregar cliente: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
     Private Sub LlenarCategorias()
         Try
@@ -124,6 +132,28 @@
             End If
         Catch ex As Exception
             MessageBox.Show("Error al eliminar el producto: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub ButtonModificar_Click(sender As Object, e As EventArgs) Handles ButtonModificar.Click
+        Try
+            If DataGridView1.SelectedRows.Count > 0 Then
+                Dim filaSeleccionada As DataGridViewRow = DataGridView1.SelectedRows(0)
+                Dim id As Integer = Convert.ToInt32(filaSeleccionada.Cells("ID").Value)
+                Dim modificarFormulario As New ModificarProducto(id)
+                modificarFormulario.ShowDialog()
+                Dim productos As New ClassProductos()
+                tablaProductos = productos.CargarDatos()
+                DataGridView1.DataSource = tablaProductos
+            Else
+                Dim modificarFormulario As New ModificarProducto()
+                Dim productos As New ClassProductos()
+                tablaProductos = Productos.CargarDatos()
+                DataGridView1.DataSource = tablaProductos
+                modificarFormulario.ShowDialog()
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error al abrir el formulario de modificación: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 End Class

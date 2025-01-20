@@ -34,21 +34,21 @@ Partial Class AgregarCliente
         '
         'TextBoxCorreo
         '
-        Me.TextBoxCorreo.Location = New System.Drawing.Point(364, 154)
+        Me.TextBoxCorreo.Location = New System.Drawing.Point(152, 128)
         Me.TextBoxCorreo.Name = "TextBoxCorreo"
         Me.TextBoxCorreo.Size = New System.Drawing.Size(100, 22)
         Me.TextBoxCorreo.TabIndex = 14
         '
         'TextBoxTelefono
         '
-        Me.TextBoxTelefono.Location = New System.Drawing.Point(364, 112)
+        Me.TextBoxTelefono.Location = New System.Drawing.Point(152, 86)
         Me.TextBoxTelefono.Name = "TextBoxTelefono"
         Me.TextBoxTelefono.Size = New System.Drawing.Size(100, 22)
         Me.TextBoxTelefono.TabIndex = 13
         '
         'TextBoxCliente
         '
-        Me.TextBoxCliente.Location = New System.Drawing.Point(364, 70)
+        Me.TextBoxCliente.Location = New System.Drawing.Point(152, 44)
         Me.TextBoxCliente.Name = "TextBoxCliente"
         Me.TextBoxCliente.Size = New System.Drawing.Size(100, 22)
         Me.TextBoxCliente.TabIndex = 12
@@ -56,7 +56,7 @@ Partial Class AgregarCliente
         'LabelCorreo
         '
         Me.LabelCorreo.AutoSize = True
-        Me.LabelCorreo.Location = New System.Drawing.Point(266, 154)
+        Me.LabelCorreo.Location = New System.Drawing.Point(54, 128)
         Me.LabelCorreo.Name = "LabelCorreo"
         Me.LabelCorreo.Size = New System.Drawing.Size(51, 17)
         Me.LabelCorreo.TabIndex = 11
@@ -65,7 +65,7 @@ Partial Class AgregarCliente
         'LabelTelefono
         '
         Me.LabelTelefono.AutoSize = True
-        Me.LabelTelefono.Location = New System.Drawing.Point(266, 112)
+        Me.LabelTelefono.Location = New System.Drawing.Point(54, 86)
         Me.LabelTelefono.Name = "LabelTelefono"
         Me.LabelTelefono.Size = New System.Drawing.Size(64, 17)
         Me.LabelTelefono.TabIndex = 10
@@ -74,7 +74,7 @@ Partial Class AgregarCliente
         'LabelCliente
         '
         Me.LabelCliente.AutoSize = True
-        Me.LabelCliente.Location = New System.Drawing.Point(266, 70)
+        Me.LabelCliente.Location = New System.Drawing.Point(54, 44)
         Me.LabelCliente.Name = "LabelCliente"
         Me.LabelCliente.Size = New System.Drawing.Size(51, 17)
         Me.LabelCliente.TabIndex = 9
@@ -82,7 +82,7 @@ Partial Class AgregarCliente
         '
         'ButtonAgregar
         '
-        Me.ButtonAgregar.Location = New System.Drawing.Point(269, 205)
+        Me.ButtonAgregar.Location = New System.Drawing.Point(57, 179)
         Me.ButtonAgregar.Name = "ButtonAgregar"
         Me.ButtonAgregar.Size = New System.Drawing.Size(85, 31)
         Me.ButtonAgregar.TabIndex = 15
@@ -91,7 +91,7 @@ Partial Class AgregarCliente
         '
         'ButtonCancelar
         '
-        Me.ButtonCancelar.Location = New System.Drawing.Point(403, 205)
+        Me.ButtonCancelar.Location = New System.Drawing.Point(191, 179)
         Me.ButtonCancelar.Name = "ButtonCancelar"
         Me.ButtonCancelar.Size = New System.Drawing.Size(80, 31)
         Me.ButtonCancelar.TabIndex = 16
@@ -102,7 +102,7 @@ Partial Class AgregarCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(312, 247)
         Me.Controls.Add(Me.ButtonCancelar)
         Me.Controls.Add(Me.ButtonAgregar)
         Me.Controls.Add(Me.TextBoxCorreo)
@@ -112,6 +112,7 @@ Partial Class AgregarCliente
         Me.Controls.Add(Me.LabelTelefono)
         Me.Controls.Add(Me.LabelCliente)
         Me.Name = "AgregarCliente"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "AgregarCliente"
         Me.ResumeLayout(False)
         Me.PerformLayout()

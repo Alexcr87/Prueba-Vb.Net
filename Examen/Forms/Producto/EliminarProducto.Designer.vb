@@ -32,7 +32,7 @@ Partial Class EliminarProducto
         '
         'TextBoxBuscar
         '
-        Me.TextBoxBuscar.Location = New System.Drawing.Point(207, 105)
+        Me.TextBoxBuscar.Location = New System.Drawing.Point(131, 30)
         Me.TextBoxBuscar.Name = "TextBoxBuscar"
         Me.TextBoxBuscar.Size = New System.Drawing.Size(205, 22)
         Me.TextBoxBuscar.TabIndex = 4
@@ -40,7 +40,7 @@ Partial Class EliminarProducto
         '
         'ButtonBuscar
         '
-        Me.ButtonBuscar.Location = New System.Drawing.Point(451, 105)
+        Me.ButtonBuscar.Location = New System.Drawing.Point(375, 30)
         Me.ButtonBuscar.Name = "ButtonBuscar"
         Me.ButtonBuscar.Size = New System.Drawing.Size(75, 23)
         Me.ButtonBuscar.TabIndex = 5
@@ -50,7 +50,7 @@ Partial Class EliminarProducto
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(121, 145)
+        Me.DataGridView1.Location = New System.Drawing.Point(45, 70)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersWidth = 51
         Me.DataGridView1.RowTemplate.Height = 24
@@ -59,7 +59,7 @@ Partial Class EliminarProducto
         '
         'ButtonEliminar
         '
-        Me.ButtonEliminar.Location = New System.Drawing.Point(319, 323)
+        Me.ButtonEliminar.Location = New System.Drawing.Point(243, 248)
         Me.ButtonEliminar.Name = "ButtonEliminar"
         Me.ButtonEliminar.Size = New System.Drawing.Size(75, 23)
         Me.ButtonEliminar.TabIndex = 7
@@ -69,7 +69,7 @@ Partial Class EliminarProducto
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(448, 310)
+        Me.Label1.Location = New System.Drawing.Point(372, 235)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(16, 17)
         Me.Label1.TabIndex = 8
@@ -80,13 +80,14 @@ Partial Class EliminarProducto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(641, 315)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ButtonEliminar)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.ButtonBuscar)
         Me.Controls.Add(Me.TextBoxBuscar)
         Me.Name = "EliminarProducto"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Eliminar Producto"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

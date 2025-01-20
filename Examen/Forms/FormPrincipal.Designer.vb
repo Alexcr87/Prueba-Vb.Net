@@ -38,7 +38,12 @@ Partial Class FormPrincipal
         Me.ButtonProductos = New System.Windows.Forms.Button()
         Me.ButtonClientes = New System.Windows.Forms.Button()
         Me.ButtonVentas = New System.Windows.Forms.Button()
+        Me.LabelVentas = New System.Windows.Forms.Label()
+        Me.LabelClientes = New System.Windows.Forms.Label()
+        Me.LabelProductos = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.MenuStrip1.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -47,7 +52,7 @@ Partial Class FormPrincipal
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VentasToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.ProductosToolStripMenuItem, Me.SalirToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1344, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(782, 28)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -61,7 +66,7 @@ Partial Class FormPrincipal
         'NuevaVentaToolStripMenuItem
         '
         Me.NuevaVentaToolStripMenuItem.Name = "NuevaVentaToolStripMenuItem"
-        Me.NuevaVentaToolStripMenuItem.Size = New System.Drawing.Size(175, 26)
+        Me.NuevaVentaToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.NuevaVentaToolStripMenuItem.Text = "Nueva Venta"
         '
         'ClientesToolStripMenuItem
@@ -74,19 +79,19 @@ Partial Class FormPrincipal
         'NuevoToolStripMenuItem
         '
         Me.NuevoToolStripMenuItem.Name = "NuevoToolStripMenuItem"
-        Me.NuevoToolStripMenuItem.Size = New System.Drawing.Size(156, 26)
+        Me.NuevoToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.NuevoToolStripMenuItem.Text = "Nuevo"
         '
         'ModificarToolStripMenuItem
         '
         Me.ModificarToolStripMenuItem.Name = "ModificarToolStripMenuItem"
-        Me.ModificarToolStripMenuItem.Size = New System.Drawing.Size(156, 26)
+        Me.ModificarToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.ModificarToolStripMenuItem.Text = "Modificar"
         '
         'EliminarToolStripMenuItem
         '
         Me.EliminarToolStripMenuItem.Name = "EliminarToolStripMenuItem"
-        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(156, 26)
+        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.EliminarToolStripMenuItem.Text = "Eliminar"
         '
         'ProductosToolStripMenuItem
@@ -99,19 +104,19 @@ Partial Class FormPrincipal
         'NuevoToolStripMenuItem1
         '
         Me.NuevoToolStripMenuItem1.Name = "NuevoToolStripMenuItem1"
-        Me.NuevoToolStripMenuItem1.Size = New System.Drawing.Size(156, 26)
+        Me.NuevoToolStripMenuItem1.Size = New System.Drawing.Size(224, 26)
         Me.NuevoToolStripMenuItem1.Text = "Nuevo"
         '
         'ModificarToolStripMenuItem1
         '
         Me.ModificarToolStripMenuItem1.Name = "ModificarToolStripMenuItem1"
-        Me.ModificarToolStripMenuItem1.Size = New System.Drawing.Size(156, 26)
+        Me.ModificarToolStripMenuItem1.Size = New System.Drawing.Size(224, 26)
         Me.ModificarToolStripMenuItem1.Text = "Modificar"
         '
         'EliminarToolStripMenuItem1
         '
         Me.EliminarToolStripMenuItem1.Name = "EliminarToolStripMenuItem1"
-        Me.EliminarToolStripMenuItem1.Size = New System.Drawing.Size(156, 26)
+        Me.EliminarToolStripMenuItem1.Size = New System.Drawing.Size(224, 26)
         Me.EliminarToolStripMenuItem1.Text = "Eliminar"
         '
         'SalirToolStripMenuItem
@@ -126,7 +131,7 @@ Partial Class FormPrincipal
         Me.ButtonProductos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ButtonProductos.Cursor = System.Windows.Forms.Cursors.Hand
         Me.ButtonProductos.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonProductos.Location = New System.Drawing.Point(670, 130)
+        Me.ButtonProductos.Location = New System.Drawing.Point(548, 122)
         Me.ButtonProductos.Name = "ButtonProductos"
         Me.ButtonProductos.Size = New System.Drawing.Size(200, 200)
         Me.ButtonProductos.TabIndex = 3
@@ -139,7 +144,7 @@ Partial Class FormPrincipal
         Me.ButtonClientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ButtonClientes.Cursor = System.Windows.Forms.Cursors.Hand
         Me.ButtonClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonClientes.Location = New System.Drawing.Point(409, 130)
+        Me.ButtonClientes.Location = New System.Drawing.Point(287, 122)
         Me.ButtonClientes.Name = "ButtonClientes"
         Me.ButtonClientes.Size = New System.Drawing.Size(200, 200)
         Me.ButtonClientes.TabIndex = 2
@@ -151,28 +156,73 @@ Partial Class FormPrincipal
         Me.ButtonVentas.BackgroundImage = CType(resources.GetObject("ButtonVentas.BackgroundImage"), System.Drawing.Image)
         Me.ButtonVentas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ButtonVentas.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.ButtonVentas.Location = New System.Drawing.Point(163, 130)
+        Me.ButtonVentas.Location = New System.Drawing.Point(32, 122)
         Me.ButtonVentas.Name = "ButtonVentas"
         Me.ButtonVentas.Size = New System.Drawing.Size(200, 200)
         Me.ButtonVentas.TabIndex = 1
         Me.ButtonVentas.UseVisualStyleBackColor = True
+        '
+        'LabelVentas
+        '
+        Me.LabelVentas.AutoSize = True
+        Me.LabelVentas.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelVentas.Location = New System.Drawing.Point(91, 336)
+        Me.LabelVentas.Name = "LabelVentas"
+        Me.LabelVentas.Size = New System.Drawing.Size(80, 25)
+        Me.LabelVentas.TabIndex = 4
+        Me.LabelVentas.Text = "Ventas"
+        '
+        'LabelClientes
+        '
+        Me.LabelClientes.AutoSize = True
+        Me.LabelClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelClientes.Location = New System.Drawing.Point(342, 336)
+        Me.LabelClientes.Name = "LabelClientes"
+        Me.LabelClientes.Size = New System.Drawing.Size(91, 25)
+        Me.LabelClientes.TabIndex = 5
+        Me.LabelClientes.Text = "Clientes"
+        '
+        'LabelProductos
+        '
+        Me.LabelProductos.AutoSize = True
+        Me.LabelProductos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelProductos.Location = New System.Drawing.Point(595, 336)
+        Me.LabelProductos.Name = "LabelProductos"
+        Me.LabelProductos.Size = New System.Drawing.Size(109, 25)
+        Me.LabelProductos.TabIndex = 6
+        Me.LabelProductos.Text = "Productos"
+        '
+        'Panel1
+        '
+        Me.Panel1.AutoSize = True
+        Me.Panel1.Controls.Add(Me.ButtonVentas)
+        Me.Panel1.Controls.Add(Me.LabelProductos)
+        Me.Panel1.Controls.Add(Me.LabelVentas)
+        Me.Panel1.Controls.Add(Me.LabelClientes)
+        Me.Panel1.Controls.Add(Me.ButtonClientes)
+        Me.Panel1.Controls.Add(Me.ButtonProductos)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(0, 28)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(782, 525)
+        Me.Panel1.TabIndex = 7
         '
         'FormPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
-        Me.ClientSize = New System.Drawing.Size(1344, 542)
-        Me.Controls.Add(Me.ButtonProductos)
-        Me.Controls.Add(Me.ButtonClientes)
-        Me.Controls.Add(Me.ButtonVentas)
+        Me.ClientSize = New System.Drawing.Size(782, 553)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "FormPrincipal"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "FormPrincipal"
+        Me.Text = "Examen"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -193,4 +243,8 @@ Partial Class FormPrincipal
     Friend WithEvents ButtonClientes As Button
     Friend WithEvents ButtonProductos As Button
     Friend WithEvents NuevaVentaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LabelVentas As Label
+    Friend WithEvents LabelClientes As Label
+    Friend WithEvents LabelProductos As Label
+    Friend WithEvents Panel1 As Panel
 End Class

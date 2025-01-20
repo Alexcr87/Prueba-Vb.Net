@@ -34,30 +34,30 @@ Partial Class AgregarProducto
         '
         'TextBoxCategoria
         '
-        Me.TextBoxCategoria.Location = New System.Drawing.Point(395, 243)
+        Me.TextBoxCategoria.Location = New System.Drawing.Point(116, 135)
         Me.TextBoxCategoria.Name = "TextBoxCategoria"
         Me.TextBoxCategoria.Size = New System.Drawing.Size(100, 22)
         Me.TextBoxCategoria.TabIndex = 3
         '
         'TextBoxPrecio
         '
-        Me.TextBoxPrecio.Location = New System.Drawing.Point(395, 186)
+        Me.TextBoxPrecio.Location = New System.Drawing.Point(116, 78)
         Me.TextBoxPrecio.Name = "TextBoxPrecio"
         Me.TextBoxPrecio.Size = New System.Drawing.Size(100, 22)
         Me.TextBoxPrecio.TabIndex = 2
         '
         'ButtonAgregar
         '
-        Me.ButtonAgregar.Location = New System.Drawing.Point(309, 299)
+        Me.ButtonAgregar.Location = New System.Drawing.Point(21, 171)
         Me.ButtonAgregar.Name = "ButtonAgregar"
-        Me.ButtonAgregar.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonAgregar.Size = New System.Drawing.Size(75, 32)
         Me.ButtonAgregar.TabIndex = 4
         Me.ButtonAgregar.Text = "Agregar"
         Me.ButtonAgregar.UseVisualStyleBackColor = True
         '
         'TextBoxNombre
         '
-        Me.TextBoxNombre.Location = New System.Drawing.Point(395, 130)
+        Me.TextBoxNombre.Location = New System.Drawing.Point(116, 22)
         Me.TextBoxNombre.Name = "TextBoxNombre"
         Me.TextBoxNombre.Size = New System.Drawing.Size(100, 22)
         Me.TextBoxNombre.TabIndex = 1
@@ -65,7 +65,7 @@ Partial Class AgregarProducto
         'LabelCategoria
         '
         Me.LabelCategoria.AutoSize = True
-        Me.LabelCategoria.Location = New System.Drawing.Point(306, 243)
+        Me.LabelCategoria.Location = New System.Drawing.Point(27, 135)
         Me.LabelCategoria.Name = "LabelCategoria"
         Me.LabelCategoria.Size = New System.Drawing.Size(69, 17)
         Me.LabelCategoria.TabIndex = 9
@@ -74,7 +74,7 @@ Partial Class AgregarProducto
         'LabelPrecio
         '
         Me.LabelPrecio.AutoSize = True
-        Me.LabelPrecio.Location = New System.Drawing.Point(306, 186)
+        Me.LabelPrecio.Location = New System.Drawing.Point(27, 78)
         Me.LabelPrecio.Name = "LabelPrecio"
         Me.LabelPrecio.Size = New System.Drawing.Size(48, 17)
         Me.LabelPrecio.TabIndex = 8
@@ -83,7 +83,7 @@ Partial Class AgregarProducto
         'LabelNombre
         '
         Me.LabelNombre.AutoSize = True
-        Me.LabelNombre.Location = New System.Drawing.Point(306, 130)
+        Me.LabelNombre.Location = New System.Drawing.Point(27, 22)
         Me.LabelNombre.Name = "LabelNombre"
         Me.LabelNombre.Size = New System.Drawing.Size(58, 17)
         Me.LabelNombre.TabIndex = 7
@@ -91,9 +91,9 @@ Partial Class AgregarProducto
         '
         'ButtonCancelar
         '
-        Me.ButtonCancelar.Location = New System.Drawing.Point(443, 299)
+        Me.ButtonCancelar.Location = New System.Drawing.Point(141, 171)
         Me.ButtonCancelar.Name = "ButtonCancelar"
-        Me.ButtonCancelar.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonCancelar.Size = New System.Drawing.Size(75, 32)
         Me.ButtonCancelar.TabIndex = 10
         Me.ButtonCancelar.Text = "Cancelar"
         Me.ButtonCancelar.UseVisualStyleBackColor = True
@@ -102,7 +102,7 @@ Partial Class AgregarProducto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(265, 232)
         Me.Controls.Add(Me.ButtonCancelar)
         Me.Controls.Add(Me.TextBoxCategoria)
         Me.Controls.Add(Me.TextBoxPrecio)
@@ -112,6 +112,7 @@ Partial Class AgregarProducto
         Me.Controls.Add(Me.LabelPrecio)
         Me.Controls.Add(Me.LabelNombre)
         Me.Name = "AgregarProducto"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "AgergarProducto"
         Me.ResumeLayout(False)
         Me.PerformLayout()

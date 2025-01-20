@@ -42,7 +42,7 @@ Partial Class Ventas
         'ComboBoxCliente
         '
         Me.ComboBoxCliente.FormattingEnabled = True
-        Me.ComboBoxCliente.Location = New System.Drawing.Point(175, 39)
+        Me.ComboBoxCliente.Location = New System.Drawing.Point(533, 26)
         Me.ComboBoxCliente.Name = "ComboBoxCliente"
         Me.ComboBoxCliente.Size = New System.Drawing.Size(121, 24)
         Me.ComboBoxCliente.TabIndex = 0
@@ -50,7 +50,7 @@ Partial Class Ventas
         'LabelCliente
         '
         Me.LabelCliente.AutoSize = True
-        Me.LabelCliente.Location = New System.Drawing.Point(42, 42)
+        Me.LabelCliente.Location = New System.Drawing.Point(400, 29)
         Me.LabelCliente.Name = "LabelCliente"
         Me.LabelCliente.Size = New System.Drawing.Size(51, 17)
         Me.LabelCliente.TabIndex = 1
@@ -59,7 +59,7 @@ Partial Class Ventas
         'LabelDesde
         '
         Me.LabelDesde.AutoSize = True
-        Me.LabelDesde.Location = New System.Drawing.Point(42, 83)
+        Me.LabelDesde.Location = New System.Drawing.Point(400, 70)
         Me.LabelDesde.Name = "LabelDesde"
         Me.LabelDesde.Size = New System.Drawing.Size(49, 17)
         Me.LabelDesde.TabIndex = 2
@@ -68,7 +68,7 @@ Partial Class Ventas
         'LabelHasta
         '
         Me.LabelHasta.AutoSize = True
-        Me.LabelHasta.Location = New System.Drawing.Point(42, 120)
+        Me.LabelHasta.Location = New System.Drawing.Point(400, 107)
         Me.LabelHasta.Name = "LabelHasta"
         Me.LabelHasta.Size = New System.Drawing.Size(45, 17)
         Me.LabelHasta.TabIndex = 3
@@ -76,7 +76,7 @@ Partial Class Ventas
         '
         'DateTimePickerDesde
         '
-        Me.DateTimePickerDesde.Location = New System.Drawing.Point(130, 83)
+        Me.DateTimePickerDesde.Location = New System.Drawing.Point(488, 70)
         Me.DateTimePickerDesde.MaxDate = New Date(2500, 12, 31, 0, 0, 0, 0)
         Me.DateTimePickerDesde.MinDate = New Date(2000, 1, 1, 0, 0, 0, 0)
         Me.DateTimePickerDesde.Name = "DateTimePickerDesde"
@@ -85,7 +85,7 @@ Partial Class Ventas
         '
         'DateTimePickerHasta
         '
-        Me.DateTimePickerHasta.Location = New System.Drawing.Point(130, 120)
+        Me.DateTimePickerHasta.Location = New System.Drawing.Point(488, 107)
         Me.DateTimePickerHasta.MaxDate = New Date(2500, 12, 31, 0, 0, 0, 0)
         Me.DateTimePickerHasta.MinDate = New Date(2000, 1, 1, 0, 0, 0, 0)
         Me.DateTimePickerHasta.Name = "DateTimePickerHasta"
@@ -95,7 +95,7 @@ Partial Class Ventas
         'CheckBoxExacta
         '
         Me.CheckBoxExacta.AutoSize = True
-        Me.CheckBoxExacta.Location = New System.Drawing.Point(378, 87)
+        Me.CheckBoxExacta.Location = New System.Drawing.Point(736, 74)
         Me.CheckBoxExacta.Name = "CheckBoxExacta"
         Me.CheckBoxExacta.Size = New System.Drawing.Size(115, 21)
         Me.CheckBoxExacta.TabIndex = 6
@@ -104,7 +104,7 @@ Partial Class Ventas
         '
         'ButtonBuscar
         '
-        Me.ButtonBuscar.Location = New System.Drawing.Point(378, 122)
+        Me.ButtonBuscar.Location = New System.Drawing.Point(736, 109)
         Me.ButtonBuscar.Name = "ButtonBuscar"
         Me.ButtonBuscar.Size = New System.Drawing.Size(75, 23)
         Me.ButtonBuscar.TabIndex = 7
@@ -124,7 +124,7 @@ Partial Class Ventas
         'DataGridViewDetalle
         '
         Me.DataGridViewDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewDetalle.Location = New System.Drawing.Point(45, 463)
+        Me.DataGridViewDetalle.Location = New System.Drawing.Point(781, 163)
         Me.DataGridViewDetalle.Name = "DataGridViewDetalle"
         Me.DataGridViewDetalle.RowHeadersWidth = 51
         Me.DataGridViewDetalle.RowTemplate.Height = 24
@@ -149,9 +149,9 @@ Partial Class Ventas
         '
         'ButtonReporte
         '
-        Me.ButtonReporte.Location = New System.Drawing.Point(846, 241)
+        Me.ButtonReporte.Location = New System.Drawing.Point(980, 52)
         Me.ButtonReporte.Name = "ButtonReporte"
-        Me.ButtonReporte.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonReporte.Size = New System.Drawing.Size(118, 53)
         Me.ButtonReporte.TabIndex = 12
         Me.ButtonReporte.Text = "Reporte De Ventas"
         Me.ButtonReporte.UseVisualStyleBackColor = True
@@ -160,7 +160,7 @@ Partial Class Ventas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1093, 685)
+        Me.ClientSize = New System.Drawing.Size(1499, 429)
         Me.Controls.Add(Me.ButtonReporte)
         Me.Controls.Add(Me.LabelEstadoPago)
         Me.Controls.Add(Me.LabelFecha)

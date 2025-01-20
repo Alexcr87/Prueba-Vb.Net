@@ -36,7 +36,7 @@ Partial Class ModificarProducto
         '
         'ButtonCancelar
         '
-        Me.ButtonCancelar.Location = New System.Drawing.Point(435, 307)
+        Me.ButtonCancelar.Location = New System.Drawing.Point(172, 213)
         Me.ButtonCancelar.Name = "ButtonCancelar"
         Me.ButtonCancelar.Size = New System.Drawing.Size(85, 31)
         Me.ButtonCancelar.TabIndex = 35
@@ -46,7 +46,7 @@ Partial Class ModificarProducto
         '
         'ButtonBuscar
         '
-        Me.ButtonBuscar.Location = New System.Drawing.Point(435, 112)
+        Me.ButtonBuscar.Location = New System.Drawing.Point(184, 18)
         Me.ButtonBuscar.Name = "ButtonBuscar"
         Me.ButtonBuscar.Size = New System.Drawing.Size(85, 31)
         Me.ButtonBuscar.TabIndex = 34
@@ -55,7 +55,7 @@ Partial Class ModificarProducto
         '
         'TextBoxBuscar
         '
-        Me.TextBoxBuscar.Location = New System.Drawing.Point(280, 116)
+        Me.TextBoxBuscar.Location = New System.Drawing.Point(29, 22)
         Me.TextBoxBuscar.Name = "TextBoxBuscar"
         Me.TextBoxBuscar.Size = New System.Drawing.Size(149, 22)
         Me.TextBoxBuscar.TabIndex = 33
@@ -63,7 +63,7 @@ Partial Class ModificarProducto
         '
         'ButtonModificar
         '
-        Me.ButtonModificar.Location = New System.Drawing.Point(300, 307)
+        Me.ButtonModificar.Location = New System.Drawing.Point(30, 213)
         Me.ButtonModificar.Name = "ButtonModificar"
         Me.ButtonModificar.Size = New System.Drawing.Size(85, 31)
         Me.ButtonModificar.TabIndex = 32
@@ -73,7 +73,7 @@ Partial Class ModificarProducto
         '
         'TextBoxCategoria
         '
-        Me.TextBoxCategoria.Location = New System.Drawing.Point(395, 256)
+        Me.TextBoxCategoria.Location = New System.Drawing.Point(144, 162)
         Me.TextBoxCategoria.Name = "TextBoxCategoria"
         Me.TextBoxCategoria.Size = New System.Drawing.Size(100, 22)
         Me.TextBoxCategoria.TabIndex = 31
@@ -81,7 +81,7 @@ Partial Class ModificarProducto
         '
         'TextBoxPrecio
         '
-        Me.TextBoxPrecio.Location = New System.Drawing.Point(395, 214)
+        Me.TextBoxPrecio.Location = New System.Drawing.Point(144, 120)
         Me.TextBoxPrecio.Name = "TextBoxPrecio"
         Me.TextBoxPrecio.Size = New System.Drawing.Size(100, 22)
         Me.TextBoxPrecio.TabIndex = 30
@@ -89,7 +89,7 @@ Partial Class ModificarProducto
         '
         'TextBoxNombre
         '
-        Me.TextBoxNombre.Location = New System.Drawing.Point(395, 172)
+        Me.TextBoxNombre.Location = New System.Drawing.Point(144, 78)
         Me.TextBoxNombre.Name = "TextBoxNombre"
         Me.TextBoxNombre.Size = New System.Drawing.Size(100, 22)
         Me.TextBoxNombre.TabIndex = 29
@@ -98,7 +98,7 @@ Partial Class ModificarProducto
         'LabelCorreo
         '
         Me.LabelCorreo.AutoSize = True
-        Me.LabelCorreo.Location = New System.Drawing.Point(297, 256)
+        Me.LabelCorreo.Location = New System.Drawing.Point(46, 162)
         Me.LabelCorreo.Name = "LabelCorreo"
         Me.LabelCorreo.Size = New System.Drawing.Size(69, 17)
         Me.LabelCorreo.TabIndex = 28
@@ -108,7 +108,7 @@ Partial Class ModificarProducto
         'LabelTelefono
         '
         Me.LabelTelefono.AutoSize = True
-        Me.LabelTelefono.Location = New System.Drawing.Point(297, 214)
+        Me.LabelTelefono.Location = New System.Drawing.Point(46, 120)
         Me.LabelTelefono.Name = "LabelTelefono"
         Me.LabelTelefono.Size = New System.Drawing.Size(48, 17)
         Me.LabelTelefono.TabIndex = 27
@@ -118,7 +118,7 @@ Partial Class ModificarProducto
         'LabelCliente
         '
         Me.LabelCliente.AutoSize = True
-        Me.LabelCliente.Location = New System.Drawing.Point(297, 172)
+        Me.LabelCliente.Location = New System.Drawing.Point(46, 78)
         Me.LabelCliente.Name = "LabelCliente"
         Me.LabelCliente.Size = New System.Drawing.Size(58, 17)
         Me.LabelCliente.TabIndex = 26
@@ -129,7 +129,7 @@ Partial Class ModificarProducto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(290, 278)
         Me.Controls.Add(Me.ButtonCancelar)
         Me.Controls.Add(Me.ButtonBuscar)
         Me.Controls.Add(Me.TextBoxBuscar)
@@ -141,6 +141,7 @@ Partial Class ModificarProducto
         Me.Controls.Add(Me.LabelTelefono)
         Me.Controls.Add(Me.LabelCliente)
         Me.Name = "ModificarProducto"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Modificar Producto"
         Me.ResumeLayout(False)
         Me.PerformLayout()

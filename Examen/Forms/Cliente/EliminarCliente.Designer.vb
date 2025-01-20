@@ -71,22 +71,22 @@ Partial Class EliminarCliente
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(491, 265)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(16, 17)
+        Me.Label1.Size = New System.Drawing.Size(0, 17)
         Me.Label1.TabIndex = 4
-        Me.Label1.Text = "0"
         Me.Label1.Visible = False
         '
         'EliminarCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(737, 356)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ButtonEliminar)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.ButtonBuscar)
         Me.Controls.Add(Me.TextBoxBuscar)
         Me.Name = "EliminarCliente"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Eliminar Cliente"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

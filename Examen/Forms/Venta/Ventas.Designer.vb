@@ -116,6 +116,7 @@ Partial Class Ventas
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(45, 163)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 51
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.Size = New System.Drawing.Size(695, 229)
@@ -126,6 +127,7 @@ Partial Class Ventas
         Me.DataGridViewDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewDetalle.Location = New System.Drawing.Point(781, 163)
         Me.DataGridViewDetalle.Name = "DataGridViewDetalle"
+        Me.DataGridViewDetalle.RowHeadersVisible = False
         Me.DataGridViewDetalle.RowHeadersWidth = 51
         Me.DataGridViewDetalle.RowTemplate.Height = 24
         Me.DataGridViewDetalle.Size = New System.Drawing.Size(695, 229)

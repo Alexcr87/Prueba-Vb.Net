@@ -208,12 +208,11 @@ Public Class ClassVentas
         Return lista
     End Function
 
+
     Public Function ObtenerDetallesVenta(idVenta As Integer) As List(Of Dictionary(Of String, Object))
-        Dim detallesVenta As New List(Of Dictionary(Of String, Object))
-        Dim query As String = "SELECT vd.Producto, vd.Cantidad, vd.PrecioUnitario, 
-                               (vd.Cantidad * vd.PrecioUnitario) AS Total
-                               FROM VentaDetalles vd
-                               WHERE vd.IdVenta = @IdVenta"
+
+        Dim detalles As New List(Of Dictionary(Of String, Object))()
+        Dim query As String = "SELECT * FROM VentasItems WHERE IdVenta = @IdVenta"
 
         Using connection As New SqlConnection(ConnectionString)
             Using command As New SqlCommand(query, connection)
@@ -222,22 +221,47 @@ Public Class ClassVentas
                 Try
                     connection.Open()
                     Using reader As SqlDataReader = command.ExecuteReader()
+
                         While reader.Read()
                             Dim detalle As New Dictionary(Of String, Object) From {
-                                {"Producto", reader("Producto").ToString()},
-                                {"Cantidad", Convert.ToInt32(reader("Cantidad"))},
-                                {"PrecioUnitario", Convert.ToDecimal(reader("PrecioUnitario"))},
-                                {"Total", Convert.ToDecimal(reader("Total"))}
-                            }
-                            detallesVenta.Add(detalle)
+                            {"IDProducto", reader("IDProducto").ToString()},
+                            {"Cantidad", Convert.ToInt32(reader("Cantidad"))},
+                            {"PrecioUnitario", Convert.ToDecimal(reader("PrecioUnitario"))},
+                            {"PrecioTotal", Convert.ToDecimal(reader("PrecioTotal"))}
+                        }
+                            detalles.Add(detalle)
                         End While
                     End Using
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar detalles de la venta: " & ex.Message)
+                    Throw New Exception("Error al obtener detalles de la venta: " & ex.Message)
                 End Try
             End Using
         End Using
 
-        Return detallesVenta
+        Return detalles
+    End Function
+
+    Public Function ObtenerTodasLasVentas() As List(Of Venta)
+        Dim listaVentas As New List(Of Venta)()
+        Dim query As String = "SELECT * FROM Ventas"
+
+        Using conn As New SqlConnection(ConnectionString)
+            Using cmd As New SqlCommand(query, conn)
+                conn.Open()
+                Using reader As SqlDataReader = cmd.ExecuteReader()
+                    While reader.Read()
+                        Dim venta As New Venta() With {
+                            .Id = Convert.ToInt32(reader("Id")),
+                            .IdCliente = Convert.ToInt32(reader("IdCliente")),
+                            .Fecha = Convert.ToDateTime(reader("Fecha")),
+                            .Total = Convert.ToDecimal(reader("Total"))
+                        }
+                        listaVentas.Add(venta)
+                    End While
+                End Using
+            End Using
+        End Using
+
+        Return listaVentas
     End Function
 End Class

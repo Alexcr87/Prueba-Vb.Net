@@ -35,6 +35,8 @@ Partial Class Ventas
         Me.LabelFecha = New System.Windows.Forms.Label()
         Me.LabelEstadoPago = New System.Windows.Forms.Label()
         Me.ButtonReporte = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -158,11 +160,33 @@ Partial Class Ventas
         Me.ButtonReporte.Text = "Reporte De Ventas"
         Me.ButtonReporte.UseVisualStyleBackColor = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(234, 124)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(217, 29)
+        Me.Label1.TabIndex = 13
+        Me.Label1.Text = "Listado de ventas"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(1033, 124)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(206, 29)
+        Me.Label2.TabIndex = 14
+        Me.Label2.Text = "Detalle de Venta"
+        '
         'Ventas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1499, 429)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ButtonReporte)
         Me.Controls.Add(Me.LabelEstadoPago)
         Me.Controls.Add(Me.LabelFecha)
@@ -177,6 +201,7 @@ Partial Class Ventas
         Me.Controls.Add(Me.LabelCliente)
         Me.Controls.Add(Me.ComboBoxCliente)
         Me.Name = "Ventas"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Ventas"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridViewDetalle, System.ComponentModel.ISupportInitialize).EndInit()
@@ -198,4 +223,6 @@ Partial Class Ventas
     Friend WithEvents LabelFecha As Label
     Friend WithEvents LabelEstadoPago As Label
     Friend WithEvents ButtonReporte As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
 End Class

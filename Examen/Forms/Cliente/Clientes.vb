@@ -83,6 +83,7 @@
             agregarClienteForm.ShowDialog()
             Dim classClientes As New ClassClientes()
             clientes = classClientes.CargarDatos()
+            LlenarComboBoxCorreo()
             DataGridView1.DataSource = clientes
         Catch ex As Exception
             MessageBox.Show("Error al agregar cliente: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -98,12 +99,14 @@
                 modificarFormulario.ShowDialog()
                 Dim classClientes As New ClassClientes()
                 clientes = classClientes.CargarDatos()
+                LlenarComboBoxCorreo()
                 DataGridView1.DataSource = clientes
             Else
                 Dim modificarFormulario As New ModificarCliente()
                 Dim classClientes As New ClassClientes()
                 clientes = classClientes.CargarDatos()
                 DataGridView1.DataSource = clientes
+                LlenarComboBoxCorreo()
                 modificarFormulario.ShowDialog()
             End If
         Catch ex As Exception
@@ -128,6 +131,7 @@
                 MessageBox.Show("Cliente eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 clientes = classClientes.CargarDatos()
+                LlenarComboBoxCorreo()
                 DataGridView1.DataSource = clientes
             Else
                 MessageBox.Show("Operación cancelada.", "Cancelar", MessageBoxButtons.OK, MessageBoxIcon.Information)

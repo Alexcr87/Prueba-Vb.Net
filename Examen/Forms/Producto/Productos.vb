@@ -9,6 +9,8 @@
             DataGridView1.AllowUserToAddRows = False
             Dim productos As New ClassProductos()
             tablaProductos = productos.CargarDatos()
+            LlenarCategorias()
+            LlenarComboBoxOrdenar()
             Dim table As New DataTable()
             table.Columns.Add("ID", GetType(Integer))
             table.Columns.Add("Nombre", GetType(String))
@@ -86,8 +88,14 @@
             End If
 
             Dim productosFiltrados = tablaProductos.Where(Function(p) p.Nombre.ToLower().Contains(textoFiltro) _
-                                                            And (categoriaFiltro = "Categorías" Or p.Categoria = categoriaFiltro)).ToList()
+                                                      And (categoriaFiltro = "Categorías" Or p.Categoria = categoriaFiltro)).ToList()
 
+            Select Case ComboBoxOrdenar.SelectedItem?.ToString()
+                Case "Nombre (A-Z)"
+                    productosFiltrados = productosFiltrados.OrderBy(Function(p) p.Nombre).ToList()
+                Case "Nombre (Z-A)"
+                    productosFiltrados = productosFiltrados.OrderByDescending(Function(p) p.Nombre).ToList()
+            End Select
             Dim table As New DataTable()
             table.Columns.Add("ID", GetType(Integer))
             table.Columns.Add("Nombre", GetType(String))
@@ -147,7 +155,12 @@
             MessageBox.Show("Error al eliminar el producto: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
+    Private Sub LlenarComboBoxOrdenar()
+        ComboBoxOrdenar.Items.Clear()
+        ComboBoxOrdenar.Items.Add("Nombre (A-Z)")
+        ComboBoxOrdenar.Items.Add("Nombre (Z-A)")
+        ComboBoxOrdenar.SelectedIndex = 0
+    End Sub
     Private Sub ButtonModificar_Click(sender As Object, e As EventArgs) Handles ButtonModificar.Click
         Try
             If DataGridView1.SelectedRows.Count > 0 Then

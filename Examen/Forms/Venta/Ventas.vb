@@ -1,130 +1,156 @@
-﻿Public Class Ventas
+﻿
+
+
+Public Class Ventas
+    Private Sub ButtonBuscar_Click(sender As Object, e As EventArgs) Handles ButtonBuscar.Click
+        Dim fechaInicio As DateTime = DateTimePickerDesde.Value.Date
+        Dim fechaFin As DateTime = DateTimePickerHasta.Value.Date
+        Dim clienteSeleccionado As Integer = Convert.ToInt32(ComboBoxCliente.SelectedValue)
+
+        If Not CheckBoxExacta.Checked AndAlso fechaInicio > fechaFin Then
+            MessageBox.Show("La fecha de inicio no puede ser mayor que la fecha de fin.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        Try
+            Dim ventas As New ClassVentas()
+            Dim listaVentas As List(Of Venta)
+
+            If CheckBoxExacta.Checked Then
+                fechaInicio = fechaInicio.Date
+                fechaFin = fechaInicio.AddDays(1).AddSeconds(-1)
+                listaVentas = ventas.BuscarVentasPorClienteYFechas(clienteSeleccionado, fechaInicio, fechaFin)
+            Else
+                If clienteSeleccionado = 0 Then
+                    listaVentas = ventas.BuscarVentasEntreFechas(fechaInicio, fechaFin)
+                Else
+                    listaVentas = ventas.BuscarVentasPorClienteYFechas(clienteSeleccionado, fechaInicio, fechaFin)
+                End If
+            End If
+
+            Dim tablaVentas As DataTable = ConvertirListaADataTable(listaVentas)
+            DataGridView1.DataSource = tablaVentas
+
+        Catch ex As Exception
+            MessageBox.Show("Error al buscar las ventas: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+
     Private Sub Ventas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            DataGridViewProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-            DataGridViewCarrito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-            DataGridViewProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-            DataGridViewProductos.MultiSelect = False
-            DataGridViewProductos.ReadOnly = True
-            DataGridViewProductos.AllowUserToAddRows = False
-            DataGridViewCarrito.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-            DataGridViewCarrito.MultiSelect = False
-            DataGridViewCarrito.ReadOnly = True
-            DataGridViewCarrito.AllowUserToAddRows = False
+            DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+            DataGridView1.MultiSelect = False
+            DataGridView1.ReadOnly = True
+            DataGridView1.AllowUserToAddRows = False
             Dim clientes As New ClassClientes()
-            ComboBoxClientes.DataSource = clientes.CargarDatos()
-            ComboBoxClientes.DisplayMember = "Nombre"
-            ComboBoxClientes.ValueMember = "ID"
-            Dim productos As New ClassProductos()
-            DataGridViewProductos.DataSource = productos.CargarDatos()
+            Dim listaClientes As List(Of Cliente) = clientes.CargarDatos()
+            Dim tablaClientes As DataTable = ConvertirListaADataTable(listaClientes)
+            Dim filaTodos As DataRow = tablaClientes.NewRow()
+            filaTodos("ID") = 0
+            filaTodos("Cliente") = "Todos"
+            tablaClientes.Rows.InsertAt(filaTodos, 0)
+            ComboBoxCliente.DataSource = tablaClientes
+            ComboBoxCliente.DisplayMember = "Cliente"
+            ComboBoxCliente.ValueMember = "ID"
 
-            ConfigurarCarrito()
         Catch ex As Exception
             MessageBox.Show("Error al cargar los datos: " & ex.Message)
         End Try
     End Sub
 
-    Private Sub ConfigurarCarrito()
-        Dim carrito As New DataTable()
-        carrito.Columns.Add("ID", GetType(Integer))
-        carrito.Columns.Add("Nombre", GetType(String))
-        carrito.Columns.Add("Cantidad", GetType(Integer))
-        carrito.Columns.Add("Precio Unitario", GetType(Decimal))
-        carrito.Columns.Add("Precio Total", GetType(Decimal))
-        DataGridViewCarrito.DataSource = carrito
-    End Sub
-
-    Private Sub ButtonAgregar_Click(sender As Object, e As EventArgs) Handles ButtonAgregar.Click
-        Try
-            If String.IsNullOrWhiteSpace(TextBoxCantidad.Text) OrElse Convert.ToInt32(TextBoxCantidad.Text) <= 0 Then
-                MessageBox.Show("Ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Return
-            End If
-
-            If DataGridViewProductos.SelectedRows.Count = 0 Then
-                MessageBox.Show("Seleccione un producto para agregar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Return
-            End If
-
-            Dim fila As DataGridViewRow = DataGridViewProductos.SelectedRows(0)
-            Dim idProducto As Integer = Convert.ToInt32(fila.Cells("ID").Value)
-            Dim nombreProducto As String = fila.Cells("Nombre").Value.ToString()
-            Dim precioUnitario As Decimal = Convert.ToDecimal(fila.Cells("Precio").Value)
-            Dim cantidad As Integer = Convert.ToInt32(TextBoxCantidad.Text)
-            Dim precioTotal As Decimal = precioUnitario * cantidad
-            Dim carrito As DataTable = TryCast(DataGridViewCarrito.DataSource, DataTable)
-            carrito.Rows.Add(idProducto, nombreProducto, cantidad, precioUnitario, precioTotal)
-            TextBoxCantidad.Clear()
-            ActualizarTotalCarrito()
-        Catch ex As Exception
-            MessageBox.Show("Error al agregar el producto: " & ex.Message)
-        End Try
-    End Sub
-
-    Private Sub ButtonEliminar_Click(sender As Object, e As EventArgs) Handles ButtonEliminar.Click
-        Try
-            If DataGridViewCarrito.SelectedRows.Count = 0 Then
-                MessageBox.Show("Seleccione un producto para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Return
-            End If
-
-            Dim fila As DataGridViewRow = DataGridViewCarrito.SelectedRows(0)
-            DataGridViewCarrito.Rows.Remove(fila)
-            ActualizarTotalCarrito()
-        Catch ex As Exception
-            MessageBox.Show("Error al eliminar el producto: " & ex.Message)
-        End Try
-    End Sub
-
-    Private Sub ButtonFinalizar_Click(sender As Object, e As EventArgs) Handles ButtonFinalizar.Click
-        Try
-            If ComboBoxClientes.SelectedValue Is Nothing Then
-                MessageBox.Show("Seleccione un cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Return
-            End If
-
-            Dim carrito As DataTable = TryCast(DataGridViewCarrito.DataSource, DataTable)
-            If carrito Is Nothing OrElse carrito.Rows.Count = 0 Then
-                MessageBox.Show("No hay productos en el carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Return
-            End If
-
-            Dim venta As New Venta() With {
-                .Fecha = DateTime.Now,
-                .IdCliente = Convert.ToInt32(ComboBoxClientes.SelectedValue),
-                .Detalles = New List(Of VentaDetalle)()
-            }
-
-            For Each fila As DataRow In carrito.Rows
-                venta.Detalles.Add(New VentaDetalle() With {
-                    .IdProducto = Convert.ToInt32(fila("ID")),
-                    .Cantidad = Convert.ToInt32(fila("Cantidad")),
-                    .PrecioUnitario = Convert.ToDecimal(fila("Precio Unitario")),
-                    .PrecioTotal = Convert.ToDecimal(fila("Precio Total"))
-                })
-            Next
-
-            Dim classVentas As New ClassVentas()
-            classVentas.AgregarVenta(venta)
-
-            MessageBox.Show("Venta registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-            ConfigurarCarrito()
-        Catch ex As Exception
-            MessageBox.Show("Error al finalizar la venta: " & ex.Message)
-        End Try
-    End Sub
-    Private Sub ActualizarTotalCarrito()
-        Dim total As Decimal = 0
-        For Each fila As DataGridViewRow In DataGridViewCarrito.Rows
-            If Not fila.IsNewRow Then
-                total += Convert.ToDecimal(fila.Cells("Precio Total").Value)
-            End If
+    Private Function ConvertirListaADataTable(Of T)(lista As List(Of T)) As DataTable
+        Dim tabla As New DataTable()
+        Dim propiedades = GetType(T).GetProperties()
+        For Each prop In propiedades
+            tabla.Columns.Add(prop.Name, prop.PropertyType)
         Next
-        LabelCarrito.Text = "Total: $" & total.ToString("N2")
+
+        For Each item In lista
+            Dim fila = tabla.NewRow()
+            For Each prop In propiedades
+                fila(prop.Name) = prop.GetValue(item, Nothing)
+            Next
+            tabla.Rows.Add(fila)
+        Next
+
+        Return tabla
+    End Function
+
+    Private Sub CheckBoxExacta_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxExacta.CheckedChanged
+        If CheckBoxExacta.Checked Then
+            DateTimePickerHasta.Enabled = False
+        Else
+            DateTimePickerHasta.Enabled = True
+        End If
     End Sub
 
+    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+        If e.RowIndex >= 0 Then
+            Dim idVenta As Integer = Convert.ToInt32(DataGridView1.Rows(e.RowIndex).Cells("Id").Value)
+            MostrarDetallesVenta(idVenta)
+        End If
+    End Sub
 
+    Private Sub MostrarDetallesVenta(idVenta As Integer)
+        Try
 
+            Dim ventas As New ClassVentas()
+            Dim detallesVenta As List(Of Dictionary(Of String, Object)) = ventas.ObtenerDetallesVenta(idVenta)
+            DataGridViewDetalle.DataSource = ConvertirListaADataTable(detallesVenta)
+            LabelFecha.Text = "Fecha de Venta: " & DateTime.Now.ToString("dd/MM/yyyy HH:mm")
+            LabelEstadoPago.Text = "Estado de Pago: " & "Pagado"
 
+        Catch ex As Exception
+            MessageBox.Show("Error al cargar los detalles de la venta: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub ButtonReporte_Click(sender As Object, e As EventArgs) Handles ButtonReporte.Click
+        Dim fechaInicio As DateTime = DateTimePickerDesde.Value.Date
+        Dim fechaFin As DateTime = DateTimePickerHasta.Value.Date
+
+        Dim ventas As New ClassVentas()
+        Dim listaVentas As List(Of Venta)
+
+        If ComboBoxCliente.SelectedValue = 0 Then
+            listaVentas = ventas.BuscarVentasEntreFechas(fechaInicio, fechaFin)
+        Else
+            listaVentas = ventas.BuscarVentasPorClienteYFechas(ComboBoxCliente.SelectedValue, fechaInicio, fechaFin)
+        End If
+
+        Dim excelApp As New Microsoft.Office.Interop.Excel.Application
+        Dim workbook As Microsoft.Office.Interop.Excel.Workbook = excelApp.Workbooks.Add()
+        Dim worksheet As Microsoft.Office.Interop.Excel.Worksheet = workbook.Sheets(1)
+
+        worksheet.Cells(1, 1).Value = "ID Venta"
+        worksheet.Cells(1, 2).Value = "Cliente"
+        worksheet.Cells(1, 3).Value = "Fecha"
+        worksheet.Cells(1, 4).Value = "Total"
+
+        Dim row As Integer = 2
+        For Each venta As Venta In listaVentas
+            worksheet.Cells(row, 1).Value = venta.Id
+            worksheet.Cells(row, 2).Value = venta.IdCliente
+            worksheet.Cells(row, 3).Value = venta.Fecha.ToString("dd/MM/yyyy")
+            worksheet.Cells(row, 4).Value = venta.Total
+            row += 1
+        Next
+
+        Dim saveFileDialog As New SaveFileDialog()
+        saveFileDialog.Filter = "Archivos de Excel (*.xlsx)|*.xlsx"
+        saveFileDialog.Title = "Guardar Reporte de Ventas"
+        saveFileDialog.FileName = "Reporte_Ventas_" & DateTime.Now.ToString("yyyyMMdd_HHmmss") & ".xlsx"
+
+        If saveFileDialog.ShowDialog() = DialogResult.OK Then
+            Dim filePath As String = saveFileDialog.FileName
+            workbook.SaveAs(filePath)
+            workbook.Close()
+            excelApp.Quit()
+            MessageBox.Show("Reporte de ventas generado exitosamente: " & filePath)
+        Else
+            MessageBox.Show("No se seleccionó una ubicación para guardar el archivo.")
+        End If
+    End Sub
 End Class

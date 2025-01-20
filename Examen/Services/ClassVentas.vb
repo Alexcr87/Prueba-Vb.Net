@@ -70,4 +70,174 @@ Public Class ClassVentas
         Return dt
     End Function
 
+    Public Function BuscarVentas(idCliente As Integer, fechaDesde As DateTime, fechaHasta As DateTime, fechaExacta As Boolean) As List(Of Venta)
+        Dim query As String = "SELECT * FROM ventas WHERE IdCliente = @IdCliente"
+        If fechaExacta Then
+            query &= " AND Fecha = @FechaExacta"
+        Else
+            query &= " AND Fecha >= @FechaDesde AND Fecha <= @FechaHasta"
+        End If
+
+        Dim ventas As New List(Of Venta)()
+
+        Using connection As New SqlConnection(ConnectionString)
+            Using command As New SqlCommand(query, connection)
+                command.Parameters.AddWithValue("@IdCliente", idCliente)
+                command.Parameters.AddWithValue("@FechaDesde", fechaDesde)
+                command.Parameters.AddWithValue("@FechaHasta", fechaHasta)
+
+                If fechaExacta Then
+                    command.Parameters.AddWithValue("@FechaExacta", fechaDesde)
+                End If
+
+                Try
+                    connection.Open()
+                    Using reader As SqlDataReader = command.ExecuteReader()
+                        While reader.Read()
+                            Dim venta As New Venta With {
+                                .Id = Convert.ToInt32(reader("Id")),
+                                .IdCliente = Convert.ToInt32(reader("IdCliente")),
+                                .Fecha = Convert.ToDateTime(reader("Fecha")),
+                                .Total = Convert.ToDecimal(reader("Total"))
+                            }
+                            venta.Detalles = CargarDetallesVenta(venta.Id)
+
+                            ventas.Add(venta)
+                        End While
+                    End Using
+                Catch ex As Exception
+                    Throw New Exception("Error al buscar ventas: " & ex.Message)
+                End Try
+            End Using
+        End Using
+
+        Return ventas
+    End Function
+
+    Private Function CargarDetallesVenta(idVenta As Integer) As List(Of VentaDetalle)
+        Dim query As String = "SELECT * FROM ventas_detalle WHERE IdVenta = @IdVenta"
+        Dim detalles As New List(Of VentaDetalle)()
+
+        Using connection As New SqlConnection(ConnectionString)
+            Using command As New SqlCommand(query, connection)
+                command.Parameters.AddWithValue("@IdVenta", idVenta)
+
+                Try
+                    connection.Open()
+                    Using reader As SqlDataReader = command.ExecuteReader()
+                        While reader.Read()
+                            Dim detalle As New VentaDetalle With {
+                                .Id = Convert.ToInt32(reader("Id")),
+                                .IdVenta = Convert.ToInt32(reader("IdVenta")),
+                                .IdProducto = Convert.ToInt32(reader("IdProducto")),
+                                .Cantidad = Convert.ToInt32(reader("Cantidad")),
+                                .PrecioUnitario = Convert.ToDecimal(reader("PrecioUnitario")),
+                                .PrecioTotal = Convert.ToDecimal(reader("PrecioTotal"))
+                            }
+                            detalles.Add(detalle)
+                        End While
+                    End Using
+                Catch ex As Exception
+                    Throw New Exception("Error al cargar detalles de la venta: " & ex.Message)
+                End Try
+            End Using
+        End Using
+
+        Return detalles
+    End Function
+    Public Function BuscarVentasEntreFechas(fechaInicio As DateTime, fechaFin As DateTime) As List(Of Venta)
+        Dim query As String = "SELECT * FROM ventas WHERE Fecha BETWEEN @FechaInicio AND @FechaFin"
+        Dim lista As New List(Of Venta)()
+
+        Using connection As New SqlConnection(ConnectionString)
+            Using command As New SqlCommand(query, connection)
+                command.Parameters.AddWithValue("@FechaInicio", fechaInicio)
+                command.Parameters.AddWithValue("@FechaFin", fechaFin)
+
+                Try
+                    connection.Open()
+                    Using reader As SqlDataReader = command.ExecuteReader()
+                        While reader.Read()
+                            Dim venta As New Venta() With {
+                                .Id = Convert.ToInt32(reader("ID")),
+                                .IdCliente = Convert.ToInt32(reader("IdCliente")),
+                                .Fecha = Convert.ToDateTime(reader("Fecha")),
+                                .Total = Convert.ToDecimal(reader("Total"))
+                            }
+                            lista.Add(venta)
+                        End While
+                    End Using
+                Catch ex As Exception
+                    Throw New Exception("Error al buscar las ventas entre fechas: " & ex.Message)
+                End Try
+            End Using
+        End Using
+
+        Return lista
+    End Function
+
+    Public Function BuscarVentasPorClienteYFechas(idCliente As Integer, fechaInicio As DateTime, fechaFin As DateTime) As List(Of Venta)
+        Dim query As String = "SELECT * FROM ventas WHERE IdCliente = @IdCliente AND Fecha BETWEEN @FechaInicio AND @FechaFin"
+        Dim lista As New List(Of Venta)()
+
+        Using connection As New SqlConnection(ConnectionString)
+            Using command As New SqlCommand(query, connection)
+                command.Parameters.AddWithValue("@IdCliente", idCliente)
+                command.Parameters.AddWithValue("@FechaInicio", fechaInicio)
+                command.Parameters.AddWithValue("@FechaFin", fechaFin)
+
+                Try
+                    connection.Open()
+                    Using reader As SqlDataReader = command.ExecuteReader()
+                        While reader.Read()
+                            Dim venta As New Venta() With {
+                                .Id = Convert.ToInt32(reader("ID")),
+                                .IdCliente = Convert.ToInt32(reader("IdCliente")),
+                                .Fecha = Convert.ToDateTime(reader("Fecha")),
+                                .Total = Convert.ToDecimal(reader("Total"))
+                            }
+                            lista.Add(venta)
+                        End While
+                    End Using
+                Catch ex As Exception
+                    Throw New Exception("Error al buscar las ventas por cliente y fechas: " & ex.Message)
+                End Try
+            End Using
+        End Using
+
+        Return lista
+    End Function
+
+    Public Function ObtenerDetallesVenta(idVenta As Integer) As List(Of Dictionary(Of String, Object))
+        Dim detallesVenta As New List(Of Dictionary(Of String, Object))
+        Dim query As String = "SELECT vd.Producto, vd.Cantidad, vd.PrecioUnitario, 
+                               (vd.Cantidad * vd.PrecioUnitario) AS Total
+                               FROM VentaDetalles vd
+                               WHERE vd.IdVenta = @IdVenta"
+
+        Using connection As New SqlConnection(ConnectionString)
+            Using command As New SqlCommand(query, connection)
+                command.Parameters.AddWithValue("@IdVenta", idVenta)
+
+                Try
+                    connection.Open()
+                    Using reader As SqlDataReader = command.ExecuteReader()
+                        While reader.Read()
+                            Dim detalle As New Dictionary(Of String, Object) From {
+                                {"Producto", reader("Producto").ToString()},
+                                {"Cantidad", Convert.ToInt32(reader("Cantidad"))},
+                                {"PrecioUnitario", Convert.ToDecimal(reader("PrecioUnitario"))},
+                                {"Total", Convert.ToDecimal(reader("Total"))}
+                            }
+                            detallesVenta.Add(detalle)
+                        End While
+                    End Using
+                Catch ex As Exception
+                    Throw New Exception("Error al cargar detalles de la venta: " & ex.Message)
+                End Try
+            End Using
+        End Using
+
+        Return detallesVenta
+    End Function
 End Class

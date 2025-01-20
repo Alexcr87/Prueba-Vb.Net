@@ -88,7 +88,7 @@ Partial Class Clientes
         '
         'TextBoxCliente
         '
-        Me.TextBoxCliente.Location = New System.Drawing.Point(165, 84)
+        Me.TextBoxCliente.Location = New System.Drawing.Point(224, 84)
         Me.TextBoxCliente.Name = "TextBoxCliente"
         Me.TextBoxCliente.Size = New System.Drawing.Size(147, 22)
         Me.TextBoxCliente.TabIndex = 5
